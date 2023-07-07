@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7869061330828422383}
   - component: {fileID: 7869061330828422380}
   - component: {fileID: 7869061330828422376}
+  - component: {fileID: 8134021909961758941}
   m_Layer: 5
   m_Name: DuckButton
   m_TagString: Untagged
@@ -31,7 +32,6 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0.22136454, w: 0.9751911}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -130,6 +130,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: d8f1c843f5f88334da575888cd5a5313, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8134021909961758941}
+        m_TargetAssemblyTypeName: DefaultNamespace.Duck, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -247,3 +259,15 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &8134021909961758941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7869061330828422386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e479909de45e67b4cacf2508fac4f394, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
