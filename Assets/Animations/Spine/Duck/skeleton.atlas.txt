@@ -1,0 +1,7 @@
+skeleton.png
+size:480,516
+filter:Linear,Linear
+pma:true
+duck
+bounds:2,2,476,512
+offsets:2,0,482,512
