@@ -5,7 +5,10 @@ using ZhukovskyGamesPlugin;
 namespace DefaultNamespace {
     public class EntryPoint : EntrySingleton {
         public static SaveDataManager SaveDataManager;
-
+        public static Audio Audio;
+        
+        [SerializeField]
+        private Audio _audio;
         public static EntryPoint Instance => instance as EntryPoint;
 
         [SerializeField]
@@ -18,6 +21,9 @@ namespace DefaultNamespace {
 
             SaveDataManager = new SaveDataManager();
             SaveDataManager.Load();
+            
+            Audio = _audio;
+            _audio.Init();
 
             _loading.SetProgress(0);
             _loading.StartFakeLoading(OnLoadingEnd);

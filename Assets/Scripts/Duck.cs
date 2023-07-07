@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using ZhukovskyGamesPlugin;
 
 namespace DefaultNamespace {
     public class Duck : MonoBehaviour {
         public void OnClick() {
+            EntryPoint.Audio.PlaySound(Sounds.Quack);
             AddOneQuack();
         }
 
