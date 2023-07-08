@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_AngularSpeed
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 565036442935432546, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 925502415311869532, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
       propertyPath: m_TagString
       value: Untagged
@@ -80,6 +84,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4090040637381620765, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4090040637381620765, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
       propertyPath: m_Constraints
       value: 112
       objectReference: {fileID: 0}
@@ -120,6 +128,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d44f842643b19cb4696672ab07d6fa9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rb: {fileID: 7491629332364539158}
-  moveSpeed: 10
   _navMeshAgent: {fileID: 6404763825314600041}
+  _rb: {fileID: 7491629332364539158}
+  moveSpeed: 3
