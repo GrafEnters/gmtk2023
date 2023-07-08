@@ -23,7 +23,8 @@ namespace DefaultNamespace {
         public enum State {
             IsCarrying,
             IsDropped,
-            IsStunning
+            IsStunning,
+            OnAltar
         }
         public void SetState(State state) {
             _collider.enabled = state == State.IsDropped;
