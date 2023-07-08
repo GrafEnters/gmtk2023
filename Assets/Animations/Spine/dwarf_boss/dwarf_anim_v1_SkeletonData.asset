@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: dwarf_anim_v1_SkeletonData
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: 5395a57bde5e3a546836cd2baa2022a8, type: 2}
+  - {fileID: 11400000, guid: 611ef842669a6734b9cfaaa7e2c3292c, type: 2}
   scale: 0.001
   skeletonJSON: {fileID: 4900000, guid: 31b9010f031e77746b9604e6724b2cf2, type: 3}
   isUpgradingBlendModeMaterials: 0
