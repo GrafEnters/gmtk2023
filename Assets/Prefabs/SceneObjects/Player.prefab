@@ -48,8 +48,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _navMeshAgent: {fileID: 4693182621049601521}
+  _obvodka: {fileID: 0}
   _rb: {fileID: 3442725300676306784}
   moveSpeed: 5
+  length: 1.5
+  width: 0.9
 --- !u!54 &3442725300676306784
 Rigidbody:
   m_ObjectHideFlags: 0

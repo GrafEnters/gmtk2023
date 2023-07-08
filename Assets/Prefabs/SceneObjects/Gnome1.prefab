@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7423929551027266974}
   - component: {fileID: 623552379279530712}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Obvodka
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,12 +98,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 925502415311869532, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 925502415311869532, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1753502792148394108, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
       propertyPath: m_Name
       value: Gnome1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1753502792148394108, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1753502792148394108, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
       propertyPath: m_TagString
@@ -174,8 +182,16 @@ PrefabInstance:
       value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 5048110140248589551, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5048110140248589551, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 7945444949244485331, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7945444949244485331, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
       propertyPath: m_TagString
@@ -203,6 +219,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 570393634237664740, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
   m_PrefabInstance: {fileID: 6860428525484572939}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &7174826953973169400 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4370524071163657715, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
+  m_PrefabInstance: {fileID: 6860428525484572939}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6659179692933694476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,3 +240,4 @@ MonoBehaviour:
   _obvodka: {fileID: 2768589564271611503}
   _rb: {fileID: 7491629332364539158}
   moveSpeed: 3
+  _spriteRenderer: {fileID: 7174826953973169400}

@@ -1,10 +1,29 @@
+using System.Collections;
 using UnityEngine;
 
 public class Gnome : Enemy {
     private const float SetDestinationRepeat = 1f;
 
+    [SerializeField]
+    private SpriteRenderer _spriteRenderer;
+
     private void Start() {
         InvokeRepeating(nameof(TrySetDestination), 0f, SetDestinationRepeat);
+    }
+
+    public override void Stun() {
+        base.Stun();
+        ChangeSpriteAlpha(0.5f);
+    }
+
+    protected override void OnStunEnd() {
+        base.OnStunEnd();
+        ChangeSpriteAlpha(1f);
+    }
+
+    private void ChangeSpriteAlpha(float percent) {
+        _spriteRenderer.color =
+            new Color(_spriteRenderer.color.r, _spriteRenderer.color.g, _spriteRenderer.color.b, percent);
     }
 
     private void TrySetDestination() {

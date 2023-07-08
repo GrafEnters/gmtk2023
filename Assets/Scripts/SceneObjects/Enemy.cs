@@ -1,15 +1,20 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.AI;
 
 public abstract class Enemy : Controllable {
 
     protected float stunDuration = 5f;
     protected bool _isStunned;
 
-    public void Stun() {
+    public virtual void Stun() {
         StartCoroutine(WaitForStunEnd());
     }
+
+    public void Knockback(Vector3 dir) {
+        _navMeshAgent.Move(dir);
+    }
+
+    protected virtual void OnStunEnd() { }
 
     private IEnumerator WaitForStunEnd() {
         _navMeshAgent.isStopped = true;
@@ -20,6 +25,7 @@ public abstract class Enemy : Controllable {
         _isStunned = false;
         _navMeshAgent.isStopped = false;
         _rb.detectCollisions = true;
+        OnStunEnd();
     }
 
     public override void StartControl() {
