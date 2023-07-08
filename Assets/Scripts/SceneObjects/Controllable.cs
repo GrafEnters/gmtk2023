@@ -17,7 +17,7 @@ public abstract class Controllable : MonoBehaviour, IControllable {
     protected Rigidbody _rb;
 
     [SerializeField]
-    protected SkeletonAnimation _spine;
+    protected SpineHandler _spine;
 
     [SerializeField]
     protected float moveSpeed;
@@ -31,9 +31,7 @@ public abstract class Controllable : MonoBehaviour, IControllable {
     protected virtual bool IsSupportReincarnation => true;
 
     private void Start() {
-        if (_spine) {
-            _spine.state.SetAnimation(0, "idle", false);
-        }
+        _spine.SetAnimation("idle");
     }
 
     protected virtual void FixedUpdate() {
@@ -69,24 +67,9 @@ public abstract class Controllable : MonoBehaviour, IControllable {
 
         Move(dir * (Time.fixedDeltaTime * moveSpeed));
 
-        SetSpineWalkOrIdle(dir);
+        _spine.SetSpineWalkOrIdle(dir);
+
         RotateSpriteHorizontallyWhenMove(dir);
-    }
-
-    protected void SetSpineWalkOrIdle(Vector3 dir) {
-        if (!_spine) {
-            return;
-        }
-
-        if (dir.magnitude == 0) {
-            if (_spine.AnimationState.GetCurrent(0).Animation.Name != "idle") {
-                _spine.AnimationState.SetAnimation(0, "idle", true);
-            }
-        } else {
-            if (_spine.AnimationState.GetCurrent(0).Animation.Name != "walk") {
-                _spine.AnimationState.SetAnimation(0, "walk", true);
-            }
-        }
     }
 
     protected void RotateSpriteHorizontallyWhenMove(Vector3 dir) {

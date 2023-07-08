@@ -35,14 +35,16 @@ public class Player : Controllable {
         if (Input.GetKeyDown(KeyCode.E)) {
             IsPressE = true;
         }
+
         if (Input.GetKeyUp(KeyCode.E)) {
             IsPressE = false;
         }
-        
+
         //TODO Test controll
         if (Input.GetKeyDown(KeyCode.Space)) {
             IsPressSpace = true;
         }
+
         if (Input.GetKeyUp(KeyCode.Space)) {
             IsPressSpace = false;
         }
@@ -59,12 +61,8 @@ public class Player : Controllable {
     }
 
     private IEnumerator AbilityAnimation() {
-        _spine.AnimationName = "attack";
-        _spine.state.SetAnimation(0, "attack", false);
-        float dur = _spine.skeletonDataAsset.GetSkeletonData(true).Animations.FirstOrDefault(p => p.Name == "attack")
-            .Duration;
-        _spine.state.AddAnimation(0, "idle", false, 0);
-        yield return new WaitForSeconds(dur);
+        yield return StartCoroutine(_spine.ShowSpineAnimation("attack"));
+        _spine.SetAnimation("idle");
         AbilityEffect();
         _isAttacking = false;
         IsLockedMovement = false;
@@ -105,9 +103,9 @@ public class Player : Controllable {
             IsPressE = false;
             carryableObject.transform.SetParent(transform);
             Vector3 position = new Vector3 {
-                z = - 0.6f,
+                z = -0.6f,
                 y = 0,
-                x = Random.Range(- 1f, 1f)
+                x = Random.Range(-1f, 1f)
             };
             carryableObject.transform.localPosition = position;
 
@@ -140,12 +138,13 @@ public class Player : Controllable {
         Vector3 offset = transform.position - from.transform.position;
         _navMeshAgent.Move(offset.normalized * (1.05f * multiplier));
     }
-    
+
     public bool TryPopCarryableObjectByType(CarryableObject.Type type, out CarryableObject carryableObject) {
         carryableObject = _carryableObjects.FirstOrDefault(o => o.type == type);
         if (carryableObject) {
             _carryableObjects.Remove(carryableObject);
         }
+
         return carryableObject != null;
     }
 

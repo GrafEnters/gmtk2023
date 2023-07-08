@@ -1,16 +1,15 @@
 using System.Collections;
 using System.Linq;
+using DefaultNamespace;
 using UnityEngine;
 
 public abstract class Enemy : Controllable {
     public float ReachTargetDistance = 1;
 
-    protected float stunDuration = 5f;
-
     [SerializeField]
     protected float distanceToBreak = 2f;
 
-    protected bool _isStunned;
+    private bool _isStunned;
 
     protected override void FixedUpdate() {
         base.FixedUpdate();
@@ -28,7 +27,7 @@ public abstract class Enemy : Controllable {
 
         if (_isUnderControl) { } else {
             RotateSpriteHorizontallyWhenMove(_navMeshAgent.velocity);
-            SetSpineWalkOrIdle(_navMeshAgent.velocity);
+            _spine.SetSpineWalkOrIdle(_navMeshAgent.velocity);
         }
     }
 
@@ -59,13 +58,6 @@ public abstract class Enemy : Controllable {
         return null;
     }
 
-    protected void TryBreakObjectWithTag(string tag) {
-        var go = FindNearObjectWithTag(tag);
-        if (go != null) {
-            go.GetComponent<MinableRock>().OnMined();
-        }
-    }
-
     public void Knockback(Vector3 dir) {
         _navMeshAgent.Move(dir);
     }
@@ -77,13 +69,8 @@ public abstract class Enemy : Controllable {
         _rb.detectCollisions = false;
         _rb.velocity = Vector3.zero;
         _isStunned = true;
-        _spine.state.SetAnimation(0, "stunned", false);
-        float dur = _spine.skeletonDataAsset.GetSkeletonData(true).Animations.FirstOrDefault(p => p.Name == "stunned")
-            .Duration;
-        _spine.state.AddAnimation(0, "idle", false, 0);
-
-
-        yield return new WaitForSeconds(dur);
+        yield return StartCoroutine(_spine.ShowSpineAnimation("stunned"));
+        _spine.SetAnimation("idle");
         _isStunned = false;
         _navMeshAgent.isStopped = false;
         _rb.detectCollisions = true;

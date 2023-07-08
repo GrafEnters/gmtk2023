@@ -61,11 +61,8 @@ public class Gnome : Enemy {
             yield break;
         }
 
-        _spine.state.SetAnimation(0, "attack", false);
-        float dur = _spine.skeletonDataAsset.GetSkeletonData(true).Animations.FirstOrDefault(p => p.Name == "attack")
-            .Duration;
-        _spine.state.AddAnimation(0, "idle", false, 0);
-        yield return new WaitForSeconds(dur);
+        yield return StartCoroutine(_spine.ShowSpineAnimation("attack"));
+        _spine.SetAnimation("idle");
     }
 
     public override void StartControl() {
@@ -95,11 +92,8 @@ public class Gnome : Enemy {
             yield break;
         }
 
-        _spine.state.SetAnimation(0, "attack", false);
-        float dur = _spine.skeletonDataAsset.GetSkeletonData(true).Animations.FirstOrDefault(p => p.Name == "attack")
-            .Duration;
-        _spine.state.AddAnimation(0, "idle", false, 0);
-        yield return new WaitForSeconds(dur);
+        yield return StartCoroutine(_spine.ShowSpineAnimation("attack"));
+        _spine.SetAnimation("idle");
         if (IsCloseToTarget) {
             target.OnHit(this);
         }

@@ -260,11 +260,24 @@ MonoBehaviour:
   _navMeshAgent: {fileID: 6031700243364371414}
   _obvodka: {fileID: 2261170013529854218}
   _rb: {fileID: 7827590976796687017}
-  _spine: {fileID: 7070468048431851131}
+  _spine: {fileID: 8486868140586761525}
   moveSpeed: 3
-  ReachTargetDistance: 1
+  ReachTargetDistance: 2
   distanceToBreak: 2
   _spriteRenderer: {fileID: 0}
+--- !u!114 &8486868140586761525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5491646824825941704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ba736037ddf418f8e27d0b39a1cddfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spine: {fileID: 7070468048431851131}
 --- !u!33 &3939573451280369666
 MeshFilter:
   m_ObjectHideFlags: 0
