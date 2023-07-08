@@ -265,6 +265,14 @@ MonoBehaviour:
   ReachTargetDistance: 1
   distanceToBreak: 2
   _spriteRenderer: {fileID: 0}
+--- !u!33 &3939573451280369666
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6393850624166975720}
+  m_Mesh: {fileID: 0}
 --- !u!23 &7052123137609214786
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -284,7 +292,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f7f6b665937db6642a447e5a3f89482d, type: 2}
+  - {fileID: 2100000, guid: 028af00a95f2add48b1c012c6be5d4f2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -318,7 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 09bdbe351d3ffc4409dd24c8aec6ebba, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 7f3940869b1a03447a57b51b991e6117, type: 2}
   initialSkinName: 
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 1
@@ -346,11 +354,3 @@ MonoBehaviour:
   _animationName: idle
   loop: 0
   timeScale: 1
---- !u!33 &3939573451280369666
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6393850624166975720}
-  m_Mesh: {fileID: 0}
