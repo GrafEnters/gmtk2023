@@ -43,14 +43,14 @@ public abstract class Controllable : MonoBehaviour, IControllable {
         }
     }
 
-    private void TryGetControl() {
+    protected virtual void TryGetControl() {
         if (_isMouseIn && Input.GetMouseButtonDown(1) && CanBeSwitched) {
             Player.Instance.EndControl();
             StartControl();
         }
     }
 
-    private void CheckInputs() {
+    protected virtual void CheckInputs() {
         CheckMainAbility();
         TryFreeControllable();
     }
@@ -173,7 +173,7 @@ public abstract class Controllable : MonoBehaviour, IControllable {
         SetObvodka(false);
     }
 
-    private void OnTriggerStay(Collider other) {
+    protected virtual void OnTriggerStay(Collider other) {
         CarryableObject targetObject = other.GetComponent<CarryableObject>();
         if (targetObject) {
             OnStepOverCarryableObject(targetObject);

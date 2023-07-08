@@ -8,6 +8,8 @@ using UnityEngine;
 public class Player : Controllable {
     public static Player Instance;
     public bool IsUnderControl => _isUnderControl;
+    public bool IsPressE;
+    public bool IsPressSpace;
 
     [Header("BlasAbility")]
     [SerializeField]
@@ -28,6 +30,24 @@ public class Player : Controllable {
         if (Instance == null) {
             Instance = this;
             StartControl();
+        }
+    }
+
+    protected override void CheckInputs() {
+        base.CheckInputs();
+        if (Input.GetKeyDown(KeyCode.E)) {
+            IsPressE = true;
+        }
+        if (Input.GetKeyUp(KeyCode.E)) {
+            IsPressE = false;
+        }
+        
+        //TODO Test controll
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            IsPressSpace = true;
+        }
+        if (Input.GetKeyUp(KeyCode.Space)) {
+            IsPressSpace = false;
         }
     }
 
@@ -83,16 +103,20 @@ public class Player : Controllable {
 
     protected override void OnStepOverCarryableObject(CarryableObject carryableObject) {
         base.OnStepOverCarryableObject(carryableObject);
-        carryableObject.transform.SetParent(transform);
-        Vector3 position = new Vector3 {
-            z = -0.6f,
-            y = 0,
-            x = Random.Range(-1f, 1f)
-        };
-        carryableObject.transform.localPosition = position;
 
-        carryableObject.SetState(CarryableObject.State.IsCarrying);
-        _carryableObjects.Add(carryableObject);
+        if (IsPressE) {
+            IsPressE = false;
+            carryableObject.transform.SetParent(transform);
+            Vector3 position = new Vector3 {
+                z = - 0.6f,
+                y = 0,
+                x = Random.Range(- 1f, 1f)
+            };
+            carryableObject.transform.localPosition = position;
+
+            carryableObject.SetState(CarryableObject.State.IsCarrying);
+            _carryableObjects.Add(carryableObject);
+        }
     }
 
     public override void OnHit(Controllable from) {
@@ -120,11 +144,33 @@ public class Player : Controllable {
         _navMeshAgent.Move(offset.normalized * (1.05f * multiplier));
     }
     
-    public bool TryGetCarryableObjectByType(CarryableObject.Type type, out CarryableObject carryableObject) {
+    public bool TryPopCarryableObjectByType(CarryableObject.Type type, out CarryableObject carryableObject) {
         carryableObject = _carryableObjects.FirstOrDefault(o => o.type == type);
         if (carryableObject) {
             _carryableObjects.Remove(carryableObject);
         }
         return carryableObject != null;
+    }
+
+    protected override void OnTriggerStay(Collider other) {
+        base.OnTriggerStay(other);
+        AltarSpot spot = other.GetComponent<AltarSpot>();
+        if (spot) {
+            if (spot != null && IsPressE) {
+                if (TryPopCarryableObjectByType(spot.type, out CarryableObject suitableObject)) {
+                    spot.PutCarryableObjecToSpot(suitableObject);
+                    IsPressE = false;
+                }
+            }
+        } else {
+            Altar altar = other.GetComponent<Altar>();
+            if (altar != null && IsPressE) {
+                if (altar.StartActivating()) {
+                    IsPressE = false;
+                }
+            } else if (altar != null && IsPressSpace) {
+                altar.InterruptActivating();
+            }
+        }
     }
 }
