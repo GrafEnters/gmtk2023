@@ -13,10 +13,20 @@ namespace DefaultNamespace {
         private long _startActivatingTime;
 
         private bool _isActivating;
+        private Player _activator;
+        private Vector3 _startedActivatorPosition;
 
         private void Start() {
             foreach (AltarSpot altarSpot in _spots) {
                 altarSpot.SetCollectCallback(OnCollected);
+            }
+        }
+
+        private void Update() {
+            if (_isActivating && _activator) {
+                if (_startedActivatorPosition != _activator.transform.position) {
+                    InterruptActivating();
+                }
             }
         }
 
@@ -36,7 +46,7 @@ namespace DefaultNamespace {
             }          
         }
 
-        public bool StartActivating() {
+        public bool StartActivating(Player activator) {
             if (_collected.Count < _spots.Count || _isActivating) {
                 return false;
             }
@@ -46,11 +56,23 @@ namespace DefaultNamespace {
                 return false;
             }
 
+            _activator = activator;
+            _startedActivatorPosition = _activator.transform.position;
+
             _startActivatingTime = DateTime.Now.Ticks;
             _isActivating = true;
-            
-            _spots.ForEach(spot => spot.ShowRiceAnimation());
+
+            for (int i = 0; i < _spots.Count; i++) {
+                _spots[i].ShowRiceAnimation(null);
+                if (i == _spots.Count - 1) {
+                    _spots[i].ShowRiceAnimation(OnActivated);
+                }
+            }
             return true;
+        }
+
+        private void OnActivated() {
+            
         }
 
         public void InterruptActivating() {

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DefaultNamespace;
-using Spine.Unity;
 using UnityEngine;
 
 public class Player : Controllable {
@@ -20,8 +19,6 @@ public class Player : Controllable {
 
     [SerializeField]
     private float knockbackPower = 0.3f;
-
-   
 
     private List<CarryableObject> _carryableObjects = new List<CarryableObject>();
     private bool _isAttacking;
@@ -165,7 +162,7 @@ public class Player : Controllable {
         } else {
             Altar altar = other.GetComponent<Altar>();
             if (altar != null && IsPressE) {
-                if (altar.StartActivating()) {
+                if (altar.StartActivating(this)) {
                     IsPressE = false;
                 }
             } else if (altar != null && IsPressSpace) {

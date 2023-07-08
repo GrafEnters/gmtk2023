@@ -22,14 +22,14 @@ namespace DefaultNamespace {
             _onCollected?.Invoke(_currentCarryableObject.type);
         }
         
-        public void ShowRiceAnimation() {
+        public void ShowRiceAnimation(Action onComplete) {
             if (_currentCarryableObject == null) {
                 return;
             }
-
+            _currentTween?.Kill();
             Vector3 altarCenter = transform.parent.position;
             altarCenter.y = 3; 
-            _currentTween = _currentCarryableObject.transform.DOMove(altarCenter, duration);
+            _currentTween = _currentCarryableObject.transform.DOMove(altarCenter, duration).OnComplete(() => onComplete?.Invoke());
         }
 
         public void InterruptRiceAnimation() {
