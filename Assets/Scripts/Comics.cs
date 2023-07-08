@@ -16,6 +16,7 @@ public class Comics : MonoBehaviour {
     }
 
     private IEnumerator ShowingCoroutine() {
+        yield return new WaitForSeconds(1f);
         for (int i = 0; i < _animations.Count; i++) {
             yield return StartCoroutine(Enumerator(i));
         }
