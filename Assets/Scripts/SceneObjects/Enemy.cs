@@ -5,6 +5,10 @@ public abstract class Enemy : Controllable {
     public float ReachTargetDistance = 1;
 
     protected float stunDuration = 5f;
+
+    [SerializeField]
+    protected float distanceToBreak = 2f;
+
     protected bool _isStunned;
 
     protected override void FixedUpdate() {
@@ -29,24 +33,23 @@ public abstract class Enemy : Controllable {
 
     protected bool IsCloseToTarget => _navMeshAgent.remainingDistance <= ReachTargetDistance;
 
-    protected GameObject FindObjectWithTag(string tag) {
+    protected GameObject FindNearObjectWithTag(string tag) {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out RaycastHit hit, 150, LayerMask.GetMask("Default"))) {
-            if (hit.rigidbody.CompareTag(tag)) {
+            if (hit.rigidbody.CompareTag(tag) &&
+                (hit.transform.position - transform.position).magnitude < distanceToBreak) {
                 return hit.rigidbody.gameObject;
             }
         }
 
         return null;
     }
-    protected void TryBreakObjectWithTag(string tag) {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out RaycastHit hit, 150, LayerMask.GetMask("Default"))) {
-            if (hit.rigidbody.CompareTag(tag)) {
-                hit.rigidbody.GetComponent<MinableRock>().OnMined();
-            }
+    protected void TryBreakObjectWithTag(string tag) {
+        var go = FindNearObjectWithTag(tag);
+        if (go != null) {
+            go.GetComponent<MinableRock>().OnMined();
         }
     }
 

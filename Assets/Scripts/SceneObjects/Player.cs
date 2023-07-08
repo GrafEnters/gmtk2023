@@ -60,6 +60,9 @@ public class Player : Controllable {
     }
 
     public override void OnHit(Controllable from) {
+        if (!gameObject.activeSelf) {
+            return;
+        }
         base.OnHit(from);
 
         if (_carryableObjects.Count > 0) {
