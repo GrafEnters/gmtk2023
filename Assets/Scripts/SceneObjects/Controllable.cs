@@ -82,6 +82,9 @@ public abstract class Controllable : MonoBehaviour, IControllable {
     }
 
     private void RotateSpriteHorizontallyWhenMove(Vector3 dir) {
+        if (!_spine) {
+            return;
+        }
         if (dir.x > 0) {
             Vector3 localScale = _spine.transform.localScale;
             localScale.x = -Mathf.Abs(localScale.x);

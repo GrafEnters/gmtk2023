@@ -13,14 +13,15 @@ public class CameraFollow : MonoBehaviour
     {
         // You can also specify your own offset from inspector
         // by making isCustomOffset bool to true
-        if (!isCustomOffset)
+        target = Controllable.CurrentUnderControl.transform;
+        if (!isCustomOffset && target)
         {
             offset = transform.position - target.position;
         }
     }
 
-    private void LateUpdate()
-    {
+    private void LateUpdate() {
+        target = Controllable.CurrentUnderControl.transform;
         SmoothFollow();   
     }
 
