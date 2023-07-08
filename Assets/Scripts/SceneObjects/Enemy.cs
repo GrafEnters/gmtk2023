@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public abstract class Enemy : Controllable {
@@ -18,6 +19,20 @@ public abstract class Enemy : Controllable {
 
     public virtual void Stun() {
         StartCoroutine(WaitForStunEnd());
+    }
+    
+    private void LateUpdate() {
+        if (IsLockedMovement) {
+            return;
+        }
+
+        if (_isUnderControl) {
+            
+        } else {
+            RotateSpriteHorizontallyWhenMove(_navMeshAgent.velocity);
+            SetSpineWalkOrIdle(_navMeshAgent.velocity);
+        }
+      
     }
 
     private void TrySetDestination() {
@@ -65,7 +80,13 @@ public abstract class Enemy : Controllable {
         _rb.detectCollisions = false;
         _rb.velocity = Vector3.zero;
         _isStunned = true;
-        yield return new WaitForSeconds(stunDuration);
+        _spine.state.SetAnimation(0, "stunned", false);
+        float dur = _spine.skeletonDataAsset.GetSkeletonData(true).Animations.FirstOrDefault(p => p.Name == "stunned")
+            .Duration;
+        _spine.state.AddAnimation(0, "idle", false, 0);
+        
+       
+        yield return new WaitForSeconds(dur);
         _isStunned = false;
         _navMeshAgent.isStopped = false;
         _rb.detectCollisions = true;
