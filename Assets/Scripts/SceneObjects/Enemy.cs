@@ -20,19 +20,16 @@ public abstract class Enemy : Controllable {
     public virtual void Stun() {
         StartCoroutine(WaitForStunEnd());
     }
-    
+
     private void LateUpdate() {
         if (IsLockedMovement) {
             return;
         }
 
-        if (_isUnderControl) {
-            
-        } else {
+        if (_isUnderControl) { } else {
             RotateSpriteHorizontallyWhenMove(_navMeshAgent.velocity);
             SetSpineWalkOrIdle(_navMeshAgent.velocity);
         }
-      
     }
 
     private void TrySetDestination() {
@@ -84,8 +81,8 @@ public abstract class Enemy : Controllable {
         float dur = _spine.skeletonDataAsset.GetSkeletonData(true).Animations.FirstOrDefault(p => p.Name == "stunned")
             .Duration;
         _spine.state.AddAnimation(0, "idle", false, 0);
-        
-       
+
+
         yield return new WaitForSeconds(dur);
         _isStunned = false;
         _navMeshAgent.isStopped = false;

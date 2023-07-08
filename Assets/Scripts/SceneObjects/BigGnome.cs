@@ -24,12 +24,12 @@ public class BigGnome : Gnome {
             yield break;
         }
 
-        yield return new WaitForSeconds(1);
+        yield return ShowAttackAnimation();
         if (go) {
             go.GetComponent<MinableRock>().OnMined();
         }
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.2f);
         _isBreaking = false;
     }
 
