@@ -50,11 +50,11 @@ MonoBehaviour:
   _navMeshAgent: {fileID: 4693182621049601521}
   _obvodka: {fileID: 0}
   _rb: {fileID: 3442725300676306784}
+  _spine: {fileID: 2571699436883058713}
   moveSpeed: 5
   length: 1.5
   width: 0.9
   knockbackPower: 0.3
-  _spine: {fileID: 2571699436883058713}
 --- !u!54 &3442725300676306784
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -167,7 +167,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 825014be760017d488dbbbf2ce0f9bf1, type: 2}
+  - {fileID: 2100000, guid: e20b63b390d1c3146b5f86ba460f00cc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -201,10 +201,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 6ed475535feeb6d4d8c52f946a407ef7, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: e1596087afc4b0a4088b20d81d6bf51d, type: 2}
   initialSkinName: 
   fixPrefabOverrideViaMeshFilter: 2
-  initialFlipX: 0
+  initialFlipX: 1
   initialFlipY: 0
   updateWhenInvisible: 3
   separatorSlotNames: []
