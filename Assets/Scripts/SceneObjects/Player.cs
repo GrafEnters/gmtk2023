@@ -114,6 +114,12 @@ public class Player : Controllable {
         }
     }
 
+    private IEnumerator ShowStunnedAnimation() {
+        IsLockedMovement = true;
+        yield return StartCoroutine(_spine.ShowSpineAnimation("hurt"));
+        IsLockedMovement = false;
+    }
+
     public override void OnHit(Controllable from) {
         if (!gameObject.activeSelf) {
             return;
@@ -135,8 +141,14 @@ public class Player : Controllable {
             multiplier = 0.2f;
         }
 
-        Vector3 offset = transform.position - from.transform.position;
-        _navMeshAgent.Move(offset.normalized * (1.05f * multiplier));
+        Vector3 dir = transform.position - from.transform.position;
+        dir = dir.normalized * (1.05f * multiplier);
+        Knockback(dir);
+    }
+
+    private void Knockback(Vector3 dir) {
+        _navMeshAgent.Move(dir);
+        StartCoroutine(ShowStunnedAnimation());
     }
 
     public bool TryPopCarryableObjectByType(CarryableObject.Type type, out CarryableObject carryableObject) {
