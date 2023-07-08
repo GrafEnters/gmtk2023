@@ -119,13 +119,12 @@ public class Player : Controllable {
         Vector3 offset = transform.position - from.transform.position;
         _navMeshAgent.Move(offset.normalized * (1.05f * multiplier));
     }
-
+    
     public bool TryGetCarryableObjectByType(CarryableObject.Type type, out CarryableObject carryableObject) {
         carryableObject = _carryableObjects.FirstOrDefault(o => o.type == type);
         if (carryableObject) {
             _carryableObjects.Remove(carryableObject);
         }
-
         return carryableObject != null;
     }
 }
