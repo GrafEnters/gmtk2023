@@ -1,10 +1,14 @@
+using System;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public class Gnome : Enemy {
     [SerializeField]
     private SpriteRenderer _spriteRenderer;
-    
+
+    private bool _isAttacking;
+
     public override void Stun() {
         base.Stun();
         ChangeSpriteAlpha(0.5f);
@@ -16,18 +20,14 @@ public class Gnome : Enemy {
     }
 
     private void ChangeSpriteAlpha(float percent) {
-        _spriteRenderer.color =
-            new Color(_spriteRenderer.color.r, _spriteRenderer.color.g, _spriteRenderer.color.b, percent);
+        if(_spriteRenderer) {
+            _spriteRenderer.color =
+                new Color(_spriteRenderer.color.r, _spriteRenderer.color.g, _spriteRenderer.color.b, percent);
+        }
     }
 
     protected override void MainAbility() {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        if (Physics.Raycast(ray, out RaycastHit hit, 150, LayerMask.GetMask("Default"))) {
-            if (hit.rigidbody.CompareTag("Rock")) {
-                hit.rigidbody.GetComponent<MinableRock>().OnMined();
-            }
-        }
+        TryBreakObjectWithTag("Rock");
     }
 
     public override void EndControl() {
@@ -36,5 +36,32 @@ public class Gnome : Enemy {
     }
 
     protected override void ReachTarget(Controllable target) {
+        if (_isAttacking) {
+            return;
+        }
+
+        IsLockedMovement = true;
+        _isAttacking = true;
+        StartCoroutine(AttackCoroutine(target));
+    }
+
+    private IEnumerator AttackCoroutine(Controllable target) {
+        _navMeshAgent.isStopped = true;
+        if (!_spine) {
+            yield break;
+        }
+        _spine.state.SetAnimation(0, "attack", false);
+        float dur = _spine.skeletonDataAsset.GetSkeletonData(true).Animations.FirstOrDefault(p => p.Name == "attack")
+            .Duration;
+        _spine.state.AddAnimation(0, "idle", false, 0);
+        yield return new WaitForSeconds(dur);
+        if (IsCloseToTarget) {
+            target.OnHit(this);
+        }
+
+        yield return new WaitForSeconds(0.5f);
+        _isAttacking = false;
+        IsLockedMovement = false;
+        _navMeshAgent.isStopped = false;
     }
 }

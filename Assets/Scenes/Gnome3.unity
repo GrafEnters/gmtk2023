@@ -304,7 +304,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7012993228128613972, guid: e13aa0bf053a2924986a2ab69da8ded5, type: 3}
       propertyPath: sceneNameToLoad
-      value: Menu
+      value: Gnome4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e13aa0bf053a2924986a2ab69da8ded5, type: 3}
@@ -564,7 +564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1287111307799966306, guid: a88e74b6c4fda4749b0a9cbb482006d3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1
+      value: -1.38
       objectReference: {fileID: 0}
     - target: {fileID: 1287111307799966306, guid: a88e74b6c4fda4749b0a9cbb482006d3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -572,7 +572,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1287111307799966306, guid: a88e74b6c4fda4749b0a9cbb482006d3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1.59
       objectReference: {fileID: 0}
     - target: {fileID: 1287111307799966306, guid: a88e74b6c4fda4749b0a9cbb482006d3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1720,7 +1720,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1287111307799966306, guid: a88e74b6c4fda4749b0a9cbb482006d3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1
+      value: -3.98
       objectReference: {fileID: 0}
     - target: {fileID: 1287111307799966306, guid: a88e74b6c4fda4749b0a9cbb482006d3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1728,7 +1728,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1287111307799966306, guid: a88e74b6c4fda4749b0a9cbb482006d3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2
+      value: -1.01
       objectReference: {fileID: 0}
     - target: {fileID: 1287111307799966306, guid: a88e74b6c4fda4749b0a9cbb482006d3, type: 3}
       propertyPath: m_LocalRotation.w

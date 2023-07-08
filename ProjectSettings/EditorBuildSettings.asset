@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Gnome3.unity
     guid: 5b856174da13d0b4ba6a237b78162592
+  - enabled: 1
+    path: Assets/Scenes/Gnome4.unity
+    guid: 49023793144463d42ac0c26a976f2886
+  - enabled: 1
+    path: Assets/Scenes/Gnome5.unity
+    guid: f1e5f122e2d7fe144bd5fe620644bdec
   m_configObjects: {}

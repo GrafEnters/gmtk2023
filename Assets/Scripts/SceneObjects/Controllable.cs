@@ -1,4 +1,5 @@
 using DefaultNamespace;
+using Spine.Unity;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,6 +14,10 @@ public abstract class Controllable : MonoBehaviour, IControllable {
 
     [SerializeField]
     protected Rigidbody _rb;
+
+    [SerializeField]
+    protected SkeletonAnimation _spine;
+
     [SerializeField]
     protected float moveSpeed;
 
@@ -20,11 +25,12 @@ public abstract class Controllable : MonoBehaviour, IControllable {
     private const float MIN_DISTANCE_TO_HAUNT = 1.5f;
     private bool _isMouseIn;
     private bool _isMousePressed;
+    protected bool IsLockedMovement;
 
     protected virtual bool IsSupportReincarnation => true;
 
     protected virtual void FixedUpdate() {
-        if (_isUnderControl) {
+        if (_isUnderControl && !IsLockedMovement) {
             WasdMovement();
         }
     }
@@ -46,14 +52,50 @@ public abstract class Controllable : MonoBehaviour, IControllable {
 
     private void CheckInputs() {
         CheckMainAbility();
-        SecondAbility();
+        TryFreeControllable();
     }
 
     private void WasdMovement() {
         Vector3 dir = Vector3.zero;
         dir.x = Input.GetAxis("Horizontal");
         dir.z = Input.GetAxis("Vertical");
+        
         Move(dir * (Time.fixedDeltaTime * moveSpeed));
+
+        SetSpineWalkOrIdle(dir);
+        RotateSpriteHorizontallyWhenMove(dir);
+    }
+
+    protected void SetSpineWalkOrIdle(Vector3 dir) {
+        if (!_spine) {
+            return;
+        }
+        if (dir.magnitude == 0) {
+            if (_spine.AnimationState.GetCurrent(0).Animation.Name != "idle") {
+                _spine.AnimationState.SetAnimation(0, "idle", true);
+            }
+        } else {
+            if (_spine.AnimationState.GetCurrent(0).Animation.Name != "walk") {
+                _spine.AnimationState.SetAnimation(0, "walk", true);
+            }
+        }
+    }
+
+    protected void RotateSpriteHorizontallyWhenMove(Vector3 dir) {
+        if (!_spine) {
+            return;
+        }
+        if (dir.x > 0) {
+            Vector3 localScale = _spine.transform.localScale;
+            localScale.x = -Mathf.Abs(localScale.x);
+            _spine.transform.localScale = localScale;
+        }
+
+        if (dir.x < 0) {
+            Vector3 localScale = _spine.transform.localScale;
+            localScale.x = Mathf.Abs(localScale.x);
+            _spine.transform.localScale = localScale;
+        }
     }
 
     private void CheckMainAbility() {
@@ -70,7 +112,7 @@ public abstract class Controllable : MonoBehaviour, IControllable {
 
     protected abstract void MainAbility();
 
-    private void SecondAbility() {
+    protected void TryFreeControllable() {
         if (Input.GetMouseButtonDown(1)) {
             if (transform.CompareTag("Player")) {
                 return;
@@ -79,21 +121,23 @@ public abstract class Controllable : MonoBehaviour, IControllable {
             _isMouseIn = false;
 
 
-            EndControl();
-            Player.Instance.StartControl();
-            Player.Instance.transform.position = transform.position;
+            FreeControllable();
         }
     }
 
-    protected virtual void OnStepOverCarryableObject(CarryableObject carryableObject) {
+    protected void FreeControllable() {
+        EndControl();
+        Player.Instance.StartControl();
+        Player.Instance.transform.position = transform.position;
     }
-    
+
+    protected virtual void OnStepOverCarryableObject(CarryableObject carryableObject) { }
+
     private void Move(Vector3 dir) {
         _navMeshAgent.Move(dir);
     }
 
-    public virtual void OnHit(Controllable from) {
-    }
+    public virtual void OnHit(Controllable from) { }
 
     public virtual void StartControl() {
         _isUnderControl = true;
@@ -106,7 +150,8 @@ public abstract class Controllable : MonoBehaviour, IControllable {
         SetObvodka(false);
     }
 
-    private bool IsCloseToPlayer => Vector3.Distance(Player.Instance.transform.position, transform.position) <= MIN_DISTANCE_TO_HAUNT;
+    private bool IsCloseToPlayer => Vector3.Distance(Player.Instance.transform.position, transform.position) <=
+                                    MIN_DISTANCE_TO_HAUNT;
 
     private bool CanBeSwitched => !_isUnderControl && !transform.CompareTag("Player") &&
                                   Player.Instance.IsUnderControl && IsCloseToPlayer && IsSupportReincarnation;

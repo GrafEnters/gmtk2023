@@ -54,6 +54,7 @@ MonoBehaviour:
   length: 1.5
   width: 0.9
   knockbackPower: 0.3
+  _spine: {fileID: 2571699436883058713}
 --- !u!54 &3442725300676306784
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -254,6 +255,10 @@ PrefabInstance:
     - target: {fileID: 3722892134367711214, guid: d3a0fd4fb119d894ba24e24a231e375c, type: 3}
       propertyPath: m_Layer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3722892134367711214, guid: d3a0fd4fb119d894ba24e24a231e375c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3722892134367711214, guid: d3a0fd4fb119d894ba24e24a231e375c, type: 3}
       propertyPath: m_TagString
