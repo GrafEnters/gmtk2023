@@ -14,12 +14,7 @@ namespace DefaultNamespace {
         }
 
         public void Save() {
-            GenerateRandomNumber();
             JsonPrefsSaveLoadManager.Save(Data, dataPath);
-        }
-        
-        private void GenerateRandomNumber() {
-            Data.RandomNumber = Random.Range(0,1001);
         }
     }
 }

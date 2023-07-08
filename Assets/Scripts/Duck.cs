@@ -9,7 +9,7 @@ namespace DefaultNamespace {
         }
 
         private void AddOneQuack() {
-            SaveDataManager.Data.Points++;
+         
             EntryPoint.SaveDataManager.Save();
         }
 
