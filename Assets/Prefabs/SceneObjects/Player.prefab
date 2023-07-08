@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3442725300676306784}
   - component: {fileID: 4693182621049601521}
   - component: {fileID: 5188964656910671401}
-  - component: {fileID: 7684147356798527199}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -51,10 +50,8 @@ MonoBehaviour:
   _navMeshAgent: {fileID: 4693182621049601521}
   _obvodka: {fileID: 0}
   _rb: {fileID: 3442725300676306784}
-  _spine: {fileID: 7684147356798527199}
+  _spine: {fileID: 2571699436883058713}
   moveSpeed: 5
-  IsPressE: 0
-  IsPressSpace: 0
   length: 1.5
   width: 0.9
   knockbackPower: 0.3
@@ -110,19 +107,6 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7684147356798527199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2081479863404441631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ba736037ddf418f8e27d0b39a1cddfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spine: {fileID: 2571699436883058713}
 --- !u!1 &2522034126471410298
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,7 +167,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 825014be760017d488dbbbf2ce0f9bf1, type: 2}
+  - {fileID: 2100000, guid: e20b63b390d1c3146b5f86ba460f00cc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -217,10 +201,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 6ed475535feeb6d4d8c52f946a407ef7, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: e1596087afc4b0a4088b20d81d6bf51d, type: 2}
   initialSkinName: 
   fixPrefabOverrideViaMeshFilter: 2
-  initialFlipX: 0
+  initialFlipX: 1
   initialFlipY: 0
   updateWhenInvisible: 3
   separatorSlotNames: []
