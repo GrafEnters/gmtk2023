@@ -40,7 +40,7 @@ public abstract class Controllable : MonoBehaviour, IControllable {
         }
     }
 
-    protected void Update() {
+    protected virtual void Update() {
         if (_isUnderControl) {
             CheckInputs();
         } else {

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Linq;
 using System.Runtime.InteropServices;
+using Spine;
 using Spine.Unity;
 using UnityEngine;
 
@@ -34,9 +35,13 @@ namespace DefaultNamespace {
         }
 
         public IEnumerator ShowSpineAnimation(string key) {
-            SetAnimation(key);
-            float dur = _spine.skeletonDataAsset.GetSkeletonData(true).Animations.FirstOrDefault(p => p.Name == key)
-                .Duration;
+            float dur = 1f;
+            TrackEntry stunnedAnimation = _spine.state.Tracks.Items.FirstOrDefault(entry => entry.Animation.Name == key);
+            if (stunnedAnimation != null) {
+                SetAnimation(key);
+                dur = _spine.skeletonDataAsset.GetSkeletonData(true).Animations.FirstOrDefault(p => p.Name == key)
+                    .Duration;
+            }
             yield return new WaitForSeconds(dur);
         }
     }

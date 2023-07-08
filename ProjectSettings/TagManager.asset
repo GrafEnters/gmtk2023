@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Rock
   - BigRock
+  - Obstacle
   layers:
   - Default
   - TransparentFX

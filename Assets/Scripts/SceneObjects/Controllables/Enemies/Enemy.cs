@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Linq;
+using Spine;
 using DefaultNamespace;
 using UnityEngine;
 
 public abstract class Enemy : Controllable {
     public float ReachTargetDistance = 1;
+    public float BlindZoneOut = 4f;
 
     [SerializeField]
     protected float distanceToBreak = 2f;
 
-    private bool _isStunned;
+    protected bool _isStunned;
+    protected bool _isAttacking;
 
     protected override void FixedUpdate() {
         base.FixedUpdate();
@@ -25,21 +28,33 @@ public abstract class Enemy : Controllable {
             return;
         }
 
-        if (_isUnderControl) { } else {
-            RotateSpriteHorizontallyWhenMove(_navMeshAgent.velocity);
-            _spine.SetSpineWalkOrIdle(_navMeshAgent.velocity);
+        if (!_isUnderControl) {
+            MoveAnimation();
         }
     }
 
-    private void TrySetDestination() {
+    protected virtual void MoveAnimation() {
+        RotateSpriteHorizontallyWhenMove(_navMeshAgent.velocity);
+        _spine.SetSpineWalkOrIdle(_navMeshAgent.velocity);
+    }
+
+    protected virtual void TrySetDestination() {
+        if (_isAttacking) {
+            return;
+        }
+
         if (_isUnderControl || _isStunned) {
             _navMeshAgent.isStopped = true;
             return;
         }
 
-        _navMeshAgent.destination = CurrentUnderControl.transform.position;
-        if (IsCloseToTarget) {
-            ReachTarget(CurrentUnderControl);
+        float distance = Vector3.Distance(CurrentUnderControl.transform.position, transform.position);
+        if (distance <= BlindZoneOut) {
+            Debug.Log("TrySetDestination");
+            _navMeshAgent.destination = CurrentUnderControl.transform.position;
+            if (IsCloseToTarget) {
+                ReachTarget(CurrentUnderControl);
+            }
         }
     }
 
@@ -69,8 +84,10 @@ public abstract class Enemy : Controllable {
         _rb.detectCollisions = false;
         _rb.velocity = Vector3.zero;
         _isStunned = true;
+        
         yield return StartCoroutine(_spine.ShowSpineAnimation("stunned"));
         _spine.SetAnimation("idle");
+
         _isStunned = false;
         _navMeshAgent.isStopped = false;
         _rb.detectCollisions = true;
