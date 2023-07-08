@@ -20,9 +20,16 @@ namespace DefaultNamespace {
         [SerializeField]
         private Comics _comics;
 
+        [SerializeField]
+        private bool IsEraseDataEveryTime = true;
+
         public void Awake() {
             if (!TryCreateSingleton()) {
                 return;
+            }
+
+            if (IsEraseDataEveryTime) {
+                PlayerPrefs.DeleteAll();
             }
 
             SaveDataManager = new SaveDataManager();

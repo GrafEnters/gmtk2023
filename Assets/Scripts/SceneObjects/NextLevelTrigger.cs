@@ -9,6 +9,9 @@ public class NextLevelTrigger : MonoBehaviour {
     private GameObject disableOnAwake;
     private bool _onTriggered;
 
+    [SerializeField]
+    private bool IsDisablingCubesOnAwake = false;
+
     private void Awake() {
         disableOnAwake.SetActive(false);
     }

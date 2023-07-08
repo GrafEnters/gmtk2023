@@ -1119,6 +1119,10 @@ PrefabInstance:
       propertyPath: _inputHeroName
       value: 
       objectReference: {fileID: 604925024}
+    - target: {fileID: 4932861366405282484, guid: 22fedc107e6d32548b270c193b046987, type: 3}
+      propertyPath: IsEraseDataEveryTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6233998475537963999, guid: 22fedc107e6d32548b270c193b046987, type: 3}
       propertyPath: m_Name
       value: EntryPoint
@@ -1176,10 +1180,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1535004825}
     m_Modifications:
-    - target: {fileID: 7915996945367181137, guid: 2b5c46ac5c0099047a8932cd578f34f0, type: 3}
-      propertyPath: m_BlocksRaycasts
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7915996945367181138, guid: 2b5c46ac5c0099047a8932cd578f34f0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1267,18 +1267,6 @@ PrefabInstance:
     - target: {fileID: 7915996945367181139, guid: 2b5c46ac5c0099047a8932cd578f34f0, type: 3}
       propertyPath: m_Name
       value: InputHeroName
-      objectReference: {fileID: 0}
-    - target: {fileID: 7915996945543978290, guid: 2b5c46ac5c0099047a8932cd578f34f0, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7915996945543978290, guid: 2b5c46ac5c0099047a8932cd578f34f0, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7915996945543978290, guid: 2b5c46ac5c0099047a8932cd578f34f0, type: 3}
-      propertyPath: m_Color.r
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b5c46ac5c0099047a8932cd578f34f0, type: 3}

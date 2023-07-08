@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3442725300676306784}
   - component: {fileID: 4693182621049601521}
   - component: {fileID: 5188964656910671401}
+  - component: {fileID: 1991407075281719876}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -50,8 +51,10 @@ MonoBehaviour:
   _navMeshAgent: {fileID: 4693182621049601521}
   _obvodka: {fileID: 0}
   _rb: {fileID: 3442725300676306784}
-  _spine: {fileID: 2571699436883058713}
+  _spine: {fileID: 1991407075281719876}
   moveSpeed: 5
+  IsPressE: 0
+  IsPressSpace: 0
   length: 1.5
   width: 0.9
   knockbackPower: 0.3
@@ -107,6 +110,19 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1991407075281719876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081479863404441631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ba736037ddf418f8e27d0b39a1cddfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spine: {fileID: 2571699436883058713}
 --- !u!1 &2522034126471410298
 GameObject:
   m_ObjectHideFlags: 0

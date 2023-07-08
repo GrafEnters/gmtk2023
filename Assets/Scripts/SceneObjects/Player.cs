@@ -116,7 +116,7 @@ public class Player : Controllable {
 
     private IEnumerator ShowStunnedAnimation() {
         IsLockedMovement = true;
-        yield return StartCoroutine(_spine.ShowSpineAnimation("hurt"));
+        yield return StartCoroutine(_spine.ShowSpineAnimation("get_hit"));
         IsLockedMovement = false;
     }
 
