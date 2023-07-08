@@ -1,3 +1,4 @@
+using System;
 using DefaultNamespace;
 using Spine.Unity;
 using UnityEngine;
@@ -29,6 +30,12 @@ public abstract class Controllable : MonoBehaviour, IControllable {
 
     protected virtual bool IsSupportReincarnation => true;
 
+    private void Start() {
+        if (_spine) {
+            _spine.state.SetAnimation(0, "idle", false);
+        }
+    }
+
     protected virtual void FixedUpdate() {
         if (_isUnderControl && !IsLockedMovement) {
             WasdMovement();
@@ -59,7 +66,7 @@ public abstract class Controllable : MonoBehaviour, IControllable {
         Vector3 dir = Vector3.zero;
         dir.x = Input.GetAxis("Horizontal");
         dir.z = Input.GetAxis("Vertical");
-        
+
         Move(dir * (Time.fixedDeltaTime * moveSpeed));
 
         SetSpineWalkOrIdle(dir);
@@ -70,6 +77,7 @@ public abstract class Controllable : MonoBehaviour, IControllable {
         if (!_spine) {
             return;
         }
+
         if (dir.magnitude == 0) {
             if (_spine.AnimationState.GetCurrent(0).Animation.Name != "idle") {
                 _spine.AnimationState.SetAnimation(0, "idle", true);
@@ -85,6 +93,7 @@ public abstract class Controllable : MonoBehaviour, IControllable {
         if (!_spine) {
             return;
         }
+
         if (dir.x > 0) {
             Vector3 localScale = _spine.transform.localScale;
             localScale.x = -Mathf.Abs(localScale.x);
@@ -140,12 +149,15 @@ public abstract class Controllable : MonoBehaviour, IControllable {
     public virtual void OnHit(Controllable from) { }
 
     public virtual void StartControl() {
+        StopAllCoroutines();
         _isUnderControl = true;
+        IsLockedMovement = false;
         CurrentUnderControl = this;
         SetObvodka(true);
     }
 
     public virtual void EndControl() {
+        StopAllCoroutines();
         _isUnderControl = false;
         SetObvodka(false);
     }

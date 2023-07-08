@@ -92,6 +92,7 @@ public abstract class Enemy : Controllable {
 
     public override void StartControl() {
         base.StartControl();
+        _isStunned = false;
         _navMeshAgent.isStopped = true;
     }
 

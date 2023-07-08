@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 public class BigGnome : Gnome {
-    private bool _isBreaking;
+   
     public override void Stun() { }
 
     protected override void MainAbility() {
@@ -11,16 +11,19 @@ public class BigGnome : Gnome {
         }
 
         _isBreaking = true;
-        StartCoroutine(BreakCoroutine());
+        IsLockedMovement = true;
+        StartCoroutine(BigBreakCoroutine());
     }
 
-    private IEnumerator BreakCoroutine() {
+    private IEnumerator BigBreakCoroutine() {
         GameObject go = FindNearObjectWithTag("BigRock");
         if (go == null) {
             go = FindNearObjectWithTag("Rock");
         }
 
         if (go == null) {
+            _isBreaking = false;
+            IsLockedMovement = false;
             yield break;
         }
 
@@ -31,12 +34,14 @@ public class BigGnome : Gnome {
 
         yield return new WaitForSeconds(0.2f);
         _isBreaking = false;
+        IsLockedMovement = false;
     }
 
     public override void OnHit(Controllable @from) {
         base.OnHit(@from);
         StopAllCoroutines();
         _isBreaking = false;
+        IsLockedMovement = false;
         FreeControllable();
     }
 }

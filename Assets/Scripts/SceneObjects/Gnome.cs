@@ -8,7 +8,7 @@ public class Gnome : Enemy {
     private SpriteRenderer _spriteRenderer;
 
     private bool _isAttacking;
-    private bool _isBreaking;
+    protected bool _isBreaking;
 
     public override void Stun() {
         base.Stun();
@@ -66,6 +66,12 @@ public class Gnome : Enemy {
             .Duration;
         _spine.state.AddAnimation(0, "idle", false, 0);
         yield return new WaitForSeconds(dur);
+    }
+
+    public override void StartControl() {
+        base.StartControl();
+        _isAttacking = false;
+        _isBreaking = false;
     }
 
     public override void EndControl() {
