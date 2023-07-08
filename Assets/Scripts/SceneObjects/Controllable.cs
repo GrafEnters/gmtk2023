@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -18,12 +19,17 @@ public abstract class Controllable : MonoBehaviour, IControllable {
 
     protected virtual void FixedUpdate() {
         if (_isUnderControl) {
+            WasdMovement();
+        }
+    }
+
+    protected void Update() {
+        if (_isUnderControl) {
             CheckInputs();
         }
     }
 
     private void CheckInputs() {
-        WasdMovement();
         CheckMainAbility();
         SecondAbility();
     }
