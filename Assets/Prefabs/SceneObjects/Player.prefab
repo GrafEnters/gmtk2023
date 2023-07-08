@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3442725300676306784}
   - component: {fileID: 4693182621049601521}
   - component: {fileID: 5188964656910671401}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -53,6 +53,7 @@ MonoBehaviour:
   moveSpeed: 5
   length: 1.5
   width: 0.9
+  knockbackPower: 0.3
 --- !u!54 &3442725300676306784
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -121,8 +122,16 @@ PrefabInstance:
       value: ViewObject
       objectReference: {fileID: 0}
     - target: {fileID: 2010795469586191826, guid: d3a0fd4fb119d894ba24e24a231e375c, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2010795469586191826, guid: d3a0fd4fb119d894ba24e24a231e375c, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3722892134367711214, guid: d3a0fd4fb119d894ba24e24a231e375c, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3722892134367711214, guid: d3a0fd4fb119d894ba24e24a231e375c, type: 3}
       propertyPath: m_TagString
@@ -191,6 +200,10 @@ PrefabInstance:
     - target: {fileID: 8236611178246473445, guid: d3a0fd4fb119d894ba24e24a231e375c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8753916090535107933, guid: d3a0fd4fb119d894ba24e24a231e375c, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8753916090535107933, guid: d3a0fd4fb119d894ba24e24a231e375c, type: 3}
       propertyPath: m_TagString

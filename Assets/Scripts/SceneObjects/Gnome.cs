@@ -21,7 +21,13 @@ public class Gnome : Enemy {
     }
 
     protected override void MainAbility() {
-        Debug.Log("Main gnome ability casted!");
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, 150, LayerMask.GetMask("Default"))) {
+            if (hit.rigidbody.CompareTag("Rock")) {
+                hit.rigidbody.GetComponent<MinableRock>().OnMined();
+            }
+        }
     }
 
     public override void EndControl() {

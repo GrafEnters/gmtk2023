@@ -18,6 +18,8 @@ public abstract class Controllable : MonoBehaviour, IControllable {
 
     protected bool _isUnderControl;
     private const float MIN_DISTANCE_TO_HAUNT = 1.5f;
+    private bool _isMouseIn;
+    private bool _isMousePressed;
 
     protected virtual bool IsSupportReincarnation => true;
 
@@ -30,6 +32,15 @@ public abstract class Controllable : MonoBehaviour, IControllable {
     protected void Update() {
         if (_isUnderControl) {
             CheckInputs();
+        } else {
+            TryGetControl();
+        }
+    }
+
+    private void TryGetControl() {
+        if (_isMouseIn && Input.GetMouseButtonDown(1) && CanBeSwitched) {
+            Player.Instance.EndControl();
+            StartControl();
         }
     }
 
@@ -46,7 +57,7 @@ public abstract class Controllable : MonoBehaviour, IControllable {
     }
 
     private void CheckMainAbility() {
-        if (Input.GetMouseButtonDown(1)) {
+        if (Input.GetMouseButtonDown(0)) {
             MainAbility();
         }
     }
@@ -64,6 +75,9 @@ public abstract class Controllable : MonoBehaviour, IControllable {
             if (transform.CompareTag("Player")) {
                 return;
             }
+
+            _isMouseIn = false;
+
 
             EndControl();
             Player.Instance.StartControl();
@@ -98,25 +112,20 @@ public abstract class Controllable : MonoBehaviour, IControllable {
                                   Player.Instance.IsUnderControl && IsCloseToPlayer && IsSupportReincarnation;
 
     private void OnMouseEnter() {
+        _isMouseIn = true;
         if (CanBeSwitched) {
             SetObvodka(true);
         }
     }
 
     private void OnMouseExit() {
+        _isMouseIn = false;
+        _isMousePressed = false;
         if (_isUnderControl) {
             return;
         }
+
         SetObvodka(false);
-    }
-
-    private void OnMouseUpAsButton() {
-        if (!CanBeSwitched) {
-            return;
-        }
-
-        Player.Instance.EndControl();
-        StartControl();
     }
 
     private void OnTriggerStay(Collider other) {

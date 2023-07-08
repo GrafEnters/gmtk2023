@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Gnome2.unity
     guid: 645f0f127cdf24146b82e5ee78ca5337
+  - enabled: 1
+    path: Assets/Scenes/Gnome3.unity
+    guid: 5b856174da13d0b4ba6a237b78162592
   m_configObjects: {}
