@@ -22,6 +22,7 @@ public abstract class Enemy : Controllable {
 
     private void TrySetDestination() {
         if (_isUnderControl || _isStunned) {
+            _navMeshAgent.isStopped = true;
             return;
         }
 
