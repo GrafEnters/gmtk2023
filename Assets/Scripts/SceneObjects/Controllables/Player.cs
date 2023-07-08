@@ -69,12 +69,8 @@ public class Player : Controllable {
     }
 
     private void AbilityEffect() {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        if (Physics.Raycast(ray, out RaycastHit hit, 150, LayerMask.GetMask("Floor"))) {
-            Vector3 dir = (hit.point - transform.position);
-            dir.y = 0;
-            dir = dir.normalized;
+        Vector3 dir = GetRaycastDirection();
+        if (dir != Vector3.zero) {
             RaycastHit[] enemies = Physics.SphereCastAll(new Ray(transform.position + dir * width / 2, dir), width,
                 length,
                 LayerMask.GetMask("Enemy"));
@@ -139,6 +135,14 @@ public class Player : Controllable {
 
         if (from is BigGnome) {
             multiplier = 0.2f;
+        }
+
+        if (from is Elf) {
+            multiplier = 0.5f;
+        }
+
+        if (from is BigElf) {
+            multiplier = 1f;
         }
 
         Vector3 dir = transform.position - from.transform.position;

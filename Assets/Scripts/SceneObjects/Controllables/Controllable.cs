@@ -55,6 +55,18 @@ public abstract class Controllable : MonoBehaviour, IControllable {
         }
     }
 
+    protected Vector3 GetRaycastDirection() {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, 150, LayerMask.GetMask("Floor"))) {
+            Vector3 dir = (hit.point - transform.position);
+            dir.y = 0;
+            return dir.normalized;
+        }
+
+        return default;
+    }
+
     protected virtual void CheckInputs() {
         CheckMainAbility();
         TryFreeControllable();
