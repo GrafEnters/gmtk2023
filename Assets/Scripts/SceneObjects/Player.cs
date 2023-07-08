@@ -20,8 +20,10 @@ public class Player : Controllable {
     private List<CarryableObject> _carryableObjects = new List<CarryableObject>();
 
     private void Awake() {
-        Instance = this;
-        StartControl();
+        if (Instance == null) {
+            Instance = this;
+            StartControl();
+        }
     }
 
     protected override void MainAbility() {
@@ -55,6 +57,13 @@ public class Player : Controllable {
     protected override void OnStepOverCarryableObject(CarryableObject carryableObject) {
         base.OnStepOverCarryableObject(carryableObject);
         carryableObject.transform.SetParent(transform);
+        Vector3 position = new Vector3 {
+            z = - 0.6f,
+            y = 0,
+            x = Random.Range(-1f, 1f)
+        };
+        carryableObject.transform.localPosition = position;
+        
         carryableObject.SetState(CarryableObject.State.IsCarrying);
         _carryableObjects.Add(carryableObject);
     }

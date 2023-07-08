@@ -6,7 +6,15 @@ namespace DefaultNamespace {
         [SerializeField]
         private Collider _collider;
 
+        public Type type;
         public float stunDuration = 1f;
+
+        public enum Type {
+            None,
+            Box,
+            Antenna,
+            RemoteController
+        }
         
         public enum State {
             IsCarrying,
