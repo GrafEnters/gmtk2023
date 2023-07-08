@@ -8,6 +8,7 @@ public abstract class Controllable : MonoBehaviour, IControllable {
     protected float moveSpeed;
 
     protected bool _isUnderControl;
+    private const float MIN_DISTANCE_TO_HAUNT = 1f;
 
     protected virtual void Update() {
         if (_isUnderControl) {
@@ -41,8 +42,10 @@ public abstract class Controllable : MonoBehaviour, IControllable {
             if (transform.CompareTag("Player")) {
                 return;
             }
+
             EndControl();
             Player.Instance.StartControl();
+            Player.Instance.transform.position = transform.position;
         }
     }
 
@@ -57,10 +60,11 @@ public abstract class Controllable : MonoBehaviour, IControllable {
     public virtual void EndControl() {
         _isUnderControl = false;
     }
-    
-    
+
+    private bool IsCloseToPlayer => Vector3.Distance(Player.Instance.transform.position, transform.position) <= MIN_DISTANCE_TO_HAUNT;
+
     private void OnMouseUpAsButton() {
-        if (_isUnderControl || transform.CompareTag("Player") || !Player.Instance.IsUnderControl) {
+        if (_isUnderControl || transform.CompareTag("Player") || !Player.Instance.IsUnderControl || !IsCloseToPlayer) {
             return;
         }
 
