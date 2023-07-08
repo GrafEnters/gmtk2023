@@ -10,7 +10,7 @@ public class Player : Controllable {
     public bool IsPressE;
     public bool IsPressSpace;
 
-    [Header("BlasAbility")]
+    [Header("Blast Ability")]
     [SerializeField]
     private float length = 2.5f;
 
