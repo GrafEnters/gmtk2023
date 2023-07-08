@@ -59,6 +59,17 @@ public abstract class Controllable : MonoBehaviour, IControllable {
         Vector3 dir = Vector3.zero;
         dir.x = Input.GetAxis("Horizontal");
         dir.z = Input.GetAxis("Vertical");
+        SetSpineWalkOrIdle(dir);
+
+        Move(dir * (Time.fixedDeltaTime * moveSpeed));
+
+        RotateSpriteHorizontallyWhenMove(dir);
+    }
+
+    private void SetSpineWalkOrIdle(Vector3 dir) {
+        if (!_spine) {
+            return;
+        }
         if (dir.magnitude == 0) {
             if (_spine.AnimationState.GetCurrent(0).Animation.Name != "idle") {
                 _spine.AnimationState.SetAnimation(0, "idle", true);
@@ -68,10 +79,6 @@ public abstract class Controllable : MonoBehaviour, IControllable {
                 _spine.AnimationState.SetAnimation(0, "walk", true);
             }
         }
-
-        Move(dir * (Time.fixedDeltaTime * moveSpeed));
-
-        RotateSpriteHorizontallyWhenMove(dir);
     }
 
     private void RotateSpriteHorizontallyWhenMove(Vector3 dir) {
