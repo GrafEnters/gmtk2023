@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -17,6 +16,8 @@ public abstract class Controllable : MonoBehaviour, IControllable {
 
     protected bool _isUnderControl;
     private const float MIN_DISTANCE_TO_HAUNT = 1.5f;
+
+    protected virtual bool IsSupportReincarnation => true;
 
     public static Controllable CurrentUnderControl;
 
@@ -85,11 +86,10 @@ public abstract class Controllable : MonoBehaviour, IControllable {
         SetObvodka(false);
     }
 
-    private bool IsCloseToPlayer => Vector3.Distance(Player.Instance.transform.position, transform.position) <=
-                                    MIN_DISTANCE_TO_HAUNT;
+    private bool IsCloseToPlayer => Vector3.Distance(Player.Instance.transform.position, transform.position) <= MIN_DISTANCE_TO_HAUNT;
 
     private bool CanBeSwitched => !_isUnderControl && !transform.CompareTag("Player") &&
-                                  Player.Instance.IsUnderControl && IsCloseToPlayer;
+                                  Player.Instance.IsUnderControl && IsCloseToPlayer && IsSupportReincarnation;
 
     private void OnMouseEnter() {
         if (CanBeSwitched) {

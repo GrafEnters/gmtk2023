@@ -1,25 +1,28 @@
 using UnityEngine;
 
 public class MainAntagonist : Enemy {
+    private const float SetDestinationRepeat = 1f;
+    protected override bool IsSupportReincarnation => false;
+
     private void Start() {
-        _navMeshAgent.destination = Player.Instance.transform.position;
+        InvokeRepeating(nameof(TrySetDestination), 0f, SetDestinationRepeat);
     }
 
-    protected override void FixedUpdate() {
-        base.FixedUpdate();
+    private void TrySetDestination() {
         if (_isUnderControl) {
             return;
         }
-        if (!Player.Instance.gameObject.activeSelf) {
-            _navMeshAgent.destination = _navMeshAgent.transform.position;
-        } else if (_navMeshAgent.isOnNavMesh) {
-            _navMeshAgent.destination = Player.Instance.transform.position;
+
+        _navMeshAgent.destination = CurrentUnderControl.transform.position;
+        if (_navMeshAgent.remainingDistance > 50) {
+            Debug.LogError("Too much dist. remaining");
         }
     }
 
     protected override void MainAbility() {
-        Debug.Log("Main antagonist ability casted!");
+        Debug.Log("Main gnome ability casted!");
     }
+
     public override void EndControl() {
         base.EndControl();
         Stun();
