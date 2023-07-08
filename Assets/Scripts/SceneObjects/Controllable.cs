@@ -1,7 +1,11 @@
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.AI;
 
 public abstract class Controllable : MonoBehaviour, IControllable {
+    public static Controllable CurrentUnderControl;
+    private const float MIN_DISTANCE_TO_HAUNT = 1f;
+
     [SerializeField]
     protected NavMeshAgent _navMeshAgent;
 
@@ -10,16 +14,14 @@ public abstract class Controllable : MonoBehaviour, IControllable {
 
     [SerializeField]
     protected Rigidbody _rb;
-
     [SerializeField]
     protected float moveSpeed;
 
     protected bool _isUnderControl;
     private const float MIN_DISTANCE_TO_HAUNT = 1.5f;
 
+    
     protected virtual bool IsSupportReincarnation => true;
-
-    public static Controllable CurrentUnderControl;
 
     protected virtual void FixedUpdate() {
         if (_isUnderControl) {
@@ -71,8 +73,14 @@ public abstract class Controllable : MonoBehaviour, IControllable {
         }
     }
 
+    protected virtual void OnStepOverCarryableObject(CarryableObject carryableObject) {
+    }
+    
     private void Move(Vector3 dir) {
         _navMeshAgent.Move(dir);
+    }
+
+    public virtual void OnHit(Controllable from) {
     }
 
     public virtual void StartControl() {
@@ -111,5 +119,12 @@ public abstract class Controllable : MonoBehaviour, IControllable {
 
         Player.Instance.EndControl();
         StartControl();
+    }
+
+    private void OnTriggerStay(Collider other) {
+        CarryableObject targetObject = other.GetComponent<CarryableObject>();
+        if (targetObject) {
+            OnStepOverCarryableObject(targetObject);
+        }
     }
 }

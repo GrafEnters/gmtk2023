@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0b5f96a28394209a412f6efad832d2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _navMeshAgent: {fileID: 6404763825314600041}
   _rb: {fileID: 7491629332364539158}
   moveSpeed: 12
-  _navMeshAgent: {fileID: 6404763825314600041}
+  ReachTargetDistance: 1.2

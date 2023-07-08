@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 
 public class Player : Controllable {
@@ -13,6 +15,9 @@ public class Player : Controllable {
 
     [SerializeField]
     private float knockbackPower = 0.3f;
+
+
+    private List<CarryableObject> _carryableObjects = new List<CarryableObject>();
 
     private void Awake() {
         Instance = this;
@@ -45,5 +50,24 @@ public class Player : Controllable {
     public override void EndControl() {
         base.EndControl();
         gameObject.SetActive(false);
+    }
+
+    protected override void OnStepOverCarryableObject(CarryableObject carryableObject) {
+        base.OnStepOverCarryableObject(carryableObject);
+        carryableObject.transform.SetParent(transform);
+        carryableObject.SetState(CarryableObject.State.IsCarrying);
+        _carryableObjects.Add(carryableObject);
+    }
+
+    public override void OnHit(Controllable from) {
+        base.OnHit(from);
+        
+        if (_carryableObjects.Count > 0) {
+            _carryableObjects.ForEach(o => o.OnDrop());
+            _carryableObjects.Clear();
+        }
+        
+        Vector3 offset = transform.position - from.transform.position;
+        _navMeshAgent.Move(offset.normalized * 1.05f);
     }
 }
