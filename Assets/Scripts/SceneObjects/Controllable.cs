@@ -46,7 +46,7 @@ public abstract class Controllable : MonoBehaviour, IControllable {
 
     private void CheckInputs() {
         CheckMainAbility();
-        SecondAbility();
+        TryFreeControllable();
     }
 
     private void WasdMovement() {
@@ -70,7 +70,7 @@ public abstract class Controllable : MonoBehaviour, IControllable {
 
     protected abstract void MainAbility();
 
-    private void SecondAbility() {
+    protected void TryFreeControllable() {
         if (Input.GetMouseButtonDown(1)) {
             if (transform.CompareTag("Player")) {
                 return;
@@ -79,10 +79,14 @@ public abstract class Controllable : MonoBehaviour, IControllable {
             _isMouseIn = false;
 
 
-            EndControl();
-            Player.Instance.StartControl();
-            Player.Instance.transform.position = transform.position;
+            FreeControllable();
         }
+    }
+
+    protected void FreeControllable() {
+        EndControl();
+        Player.Instance.StartControl();
+        Player.Instance.transform.position = transform.position;
     }
 
     protected virtual void OnStepOverCarryableObject(CarryableObject carryableObject) {

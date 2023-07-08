@@ -4,7 +4,9 @@ using UnityEngine;
 public class Gnome : Enemy {
     [SerializeField]
     private SpriteRenderer _spriteRenderer;
-    
+
+    private bool _isAttacking;
+
     public override void Stun() {
         base.Stun();
         ChangeSpriteAlpha(0.5f);
@@ -21,13 +23,7 @@ public class Gnome : Enemy {
     }
 
     protected override void MainAbility() {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        if (Physics.Raycast(ray, out RaycastHit hit, 150, LayerMask.GetMask("Default"))) {
-            if (hit.rigidbody.CompareTag("Rock")) {
-                hit.rigidbody.GetComponent<MinableRock>().OnMined();
-            }
-        }
+        TryBreakObjectWithTag("Rock");
     }
 
     public override void EndControl() {
@@ -36,5 +32,23 @@ public class Gnome : Enemy {
     }
 
     protected override void ReachTarget(Controllable target) {
+        if (_isAttacking) {
+            return;
+        }
+
+        _isAttacking = true;
+        StartCoroutine(AttackCoroutine(target));
+    }
+
+    private IEnumerator AttackCoroutine(Controllable target) {
+        _navMeshAgent.isStopped = true;
+        yield return new WaitForSeconds(1);
+        if (IsCloseToTarget) {
+            target.OnHit(this);
+        }
+
+        yield return new WaitForSeconds(0.5f);
+        _isAttacking = false;
+        _navMeshAgent.isStopped = false;
     }
 }

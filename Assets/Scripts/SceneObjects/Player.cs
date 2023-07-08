@@ -61,13 +61,21 @@ public class Player : Controllable {
 
     public override void OnHit(Controllable from) {
         base.OnHit(from);
-        
+
         if (_carryableObjects.Count > 0) {
             _carryableObjects.ForEach(o => o.OnDrop());
             _carryableObjects.Clear();
         }
+
+        float multiplier = 1;
+        if (from is Gnome) {
+            multiplier = 0.1f;
+        }
+        if (from is BigGnome) {
+            multiplier = 0.2f;
+        }
         
         Vector3 offset = transform.position - from.transform.position;
-        _navMeshAgent.Move(offset.normalized * 1.05f);
+        _navMeshAgent.Move(offset.normalized * (1.05f * multiplier));
     }
 }

@@ -17,13 +17,36 @@ public abstract class Enemy : Controllable {
     }
 
     private void TrySetDestination() {
-        if (_isUnderControl) {
+        if (_isUnderControl || _isStunned) {
             return;
         }
 
         _navMeshAgent.destination = CurrentUnderControl.transform.position;
-        if (_navMeshAgent.remainingDistance <= ReachTargetDistance) {
+        if (IsCloseToTarget) {
             ReachTarget(CurrentUnderControl);
+        }
+    }
+
+    protected bool IsCloseToTarget => _navMeshAgent.remainingDistance <= ReachTargetDistance;
+
+    protected GameObject FindObjectWithTag(string tag) {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, 150, LayerMask.GetMask("Default"))) {
+            if (hit.rigidbody.CompareTag(tag)) {
+                return hit.rigidbody.gameObject;
+            }
+        }
+
+        return null;
+    }
+    protected void TryBreakObjectWithTag(string tag) {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, 150, LayerMask.GetMask("Default"))) {
+            if (hit.rigidbody.CompareTag(tag)) {
+                hit.rigidbody.GetComponent<MinableRock>().OnMined();
+            }
         }
     }
 
