@@ -4,7 +4,6 @@ using UnityEngine.AI;
 
 public abstract class Controllable : MonoBehaviour, IControllable {
     public static Controllable CurrentUnderControl;
-    private const float MIN_DISTANCE_TO_HAUNT = 1f;
 
     [SerializeField]
     protected NavMeshAgent _navMeshAgent;
@@ -20,7 +19,6 @@ public abstract class Controllable : MonoBehaviour, IControllable {
     protected bool _isUnderControl;
     private const float MIN_DISTANCE_TO_HAUNT = 1.5f;
 
-    
     protected virtual bool IsSupportReincarnation => true;
 
     protected virtual void FixedUpdate() {

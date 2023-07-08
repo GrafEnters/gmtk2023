@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 
 public abstract class Enemy : Controllable {
-    private const float SetDestinationRepeat = 1f;
     public float ReachTargetDistance = 1;
 
     protected float stunDuration = 5f;
@@ -13,7 +12,6 @@ public abstract class Enemy : Controllable {
         TrySetDestination();
     }
 
-    public void Stun() {
     public virtual void Stun() {
         StartCoroutine(WaitForStunEnd());
     }
