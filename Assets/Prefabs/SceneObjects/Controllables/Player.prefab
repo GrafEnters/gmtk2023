@@ -55,6 +55,7 @@ MonoBehaviour:
   _spine: {fileID: 3284580608562250907}
   _turnContainer: {fileID: 3203003384447072051}
   moveSpeed: 5
+  IsLockedMovement: 0
   IsPressE: 0
   IsPressSpace: 0
   Animation: {fileID: 861108550654865507}
@@ -261,7 +262,7 @@ MonoBehaviour:
   disableRenderingOnOverride: 1
   updateTiming: 1
   unscaledTime: 0
-  _animationName: idle
+  _animationName: Jump
   loop: 1
   timeScale: 1
 --- !u!1 &7706982234369232560

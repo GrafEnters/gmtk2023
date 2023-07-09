@@ -118,19 +118,21 @@ namespace DefaultNamespace {
         }
 
         private IEnumerator ShowScene1() {
-            Player.Spine.ShowSpineAnimation("Jump");
+            Player.IsLockedMovement = true;
+            Player.Spine.SetAnimation("Jump", true);
             Player.Animation.Play("Appear");
             
             do {
                 yield return null;
             } while (Player.Animation.IsPlaying("Appear"));
             
-            Player.Spine.ShowSpineAnimation("Landing");
+            Player.Spine.SetAnimation("idle", true);
         }
         
         private IEnumerator ShowScene2() {
             yield return new WaitForSeconds(1f);
             _movingTutorActivated = true;
+            Player.IsLockedMovement = false;
             UIManager.SetWASDVisibility(true);
             yield return new WaitUntil(() => !_movingTutorActivated);
             UIManager.SetWASDVisibility(false);
@@ -140,10 +142,13 @@ namespace DefaultNamespace {
             Hero.gameObject.SetActive(true);
             Hero.SetSpeakMode(true);
             Hero.SetDefendingMode(false);
+            Hero.Spine.SetAnimation("Jump", true);
             Hero.Animation.Play("Appear");
             do {
                 yield return null;
             } while (Hero.Animation.IsPlaying("Appear"));
+            
+            Hero.Spine.SetAnimation("idle", true);
 
             Hero.PopUp.Show("Im gonna llik you! Hahah ah!");
             yield return new WaitForSeconds(2f);
