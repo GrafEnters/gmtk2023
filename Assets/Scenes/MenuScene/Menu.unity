@@ -3090,9 +3090,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5651311224666140478, guid: 182e0aafd6f4a4d78a66f8405a96613c, type: 3}
+      propertyPath: duration
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465194677753116263, guid: 182e0aafd6f4a4d78a66f8405a96613c, type: 3}
+      propertyPath: duration
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9056989213940335210, guid: 182e0aafd6f4a4d78a66f8405a96613c, type: 3}
       propertyPath: m_Name
       value: Altar
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182117825439720988, guid: 182e0aafd6f4a4d78a66f8405a96613c, type: 3}
+      propertyPath: duration
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 182e0aafd6f4a4d78a66f8405a96613c, type: 3}
