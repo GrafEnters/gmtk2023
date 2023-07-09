@@ -50,7 +50,6 @@ public abstract class Enemy : Controllable {
 
         float distance = Vector3.Distance(CurrentUnderControl.transform.position, transform.position);
         if (distance <= BlindZoneOut) {
-            Debug.Log("TrySetDestination");
             _navMeshAgent.destination = CurrentUnderControl.transform.position;
             if (IsCloseToTarget) {
                 ReachTarget(CurrentUnderControl);
