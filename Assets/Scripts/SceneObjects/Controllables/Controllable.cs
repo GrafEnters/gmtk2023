@@ -33,7 +33,7 @@ public abstract class Controllable : MonoBehaviour, IControllable {
 
     protected virtual bool IsSupportReincarnation => true;
 
-    private void Start() {
+    protected virtual void Start() {
         if (!IsLockedMovement) {
             _spine.SetAnimation("idle");
         }

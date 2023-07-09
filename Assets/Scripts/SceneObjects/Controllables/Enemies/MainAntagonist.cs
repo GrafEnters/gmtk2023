@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using DefaultNamespace;
+using TMPro;
 using UnityEngine;
 using ZhukovskyGamesPlugin;
 
@@ -8,6 +9,9 @@ public class MainAntagonist : Enemy {
     public Animation Animation;
     public SpeechPopUp PopUp;
 
+    [SerializeField]
+    private TextMeshPro _name;
+    
     private bool _isSpeaking;
     private bool _isWaitingArriving;
     private bool _isDefending = true;
@@ -19,7 +23,14 @@ public class MainAntagonist : Enemy {
     
 
     protected override bool IsSupportReincarnation => false;
-    
+
+    protected override void Start() {
+        _name.text = SaveDataManager.Data.HeroName;
+        if (!_isSpeaking) {
+            base.Start();
+        }
+    }
+
     public void SetSpeakMode(bool isSpeaking) {
         _isSpeaking = isSpeaking;
     }
@@ -55,6 +66,9 @@ public class MainAntagonist : Enemy {
     }
 
     protected override void MoveAnimation() {
+        if (_isSpeaking) {
+            return;
+        }
         if (_isDefending) {
             float degrees = angle * Mathf.Rad2Deg % 360;
             if (degrees >= 315 && degrees <= 360 || degrees >= 0 && degrees <= 135) {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -29,27 +30,39 @@ namespace DefaultNamespace {
             if (Instance == null) {
                 Instance = this;
                 DontDestroyOnLoad(this);
-            }
-            
-            if (SaveDataManager.Data.IsTutor2Passed) {
-                _leftDoor.SetOpened();
-                _rightDoor.SetOpened();
-            }
-
-            if (SaveDataManager.Data.IsTutor1Passed && !isStarted) {
-                Hero.gameObject.SetActive(true);
             } else {
-                Hero.gameObject.SetActive(false);
-                StartCoroutine(ShowScenario());
+                if (Instance != this) {
+                    Destroy(this.gameObject);
+                }
             }
             
             SceneManager.activeSceneChanged -= OnActiveSceneChanged;
             SceneManager.activeSceneChanged += OnActiveSceneChanged;
-
-            isStarted = true;
         }
 
         private void OnActiveSceneChanged(Scene prev, Scene next) {
+            if (next.name == "Menu") {
+                MainAntagonist[] antagonist = GetComponentsInRootObjects<MainAntagonist>(next);
+                if (antagonist.Length > 0) {
+                    Hero = antagonist.First();
+                }
+                if (SaveDataManager.Data.IsTutor1Passed) {
+                    Hero.gameObject.SetActive(true);
+                } else {
+                    Player.IsLockedMovement = true;
+                    Hero.gameObject.SetActive(false);
+                    StartCoroutine(ShowScenario());
+                }
+                isStarted = true;
+                
+                if (SaveDataManager.Data.IsTutor2Passed) {
+                    _leftDoor.SetOpened();
+                    _rightDoor.SetOpened();
+                }
+            }
+            
+            UIManager.HideBottomText();
+
             if (next.name.Contains("Gnome")) {
                 Gnome[] objects = GetComponentsInRootObjects<Gnome>(next);
                 if (objects.Length > 0) {
@@ -74,6 +87,16 @@ namespace DefaultNamespace {
                         }
                     
                         UIManager.ShowBottomText("USE RMB TO POSSESS SOMEONE OR LEAVE A POSSESSED BODY", Color.white);
+                    }
+                }
+            }
+
+            if (next.name != "Menu") {
+                CarryableObject[] objects = GetComponentsInRootObjects<CarryableObject>(next);
+                if (objects.Length > 0) {
+                    bool carry = objects.Any(o => o.GetComponentInChildren<Player>() == null);
+                    if (carry) {
+                        UIManager.ShowBottomText("PRESS 'E' TO LIFT TV PART", Color.white);
                     }
                 }
             }
@@ -110,11 +133,7 @@ namespace DefaultNamespace {
             yield return ShowScene1();
             yield return ShowScene2();
             yield return ShowScene3();
-            
-            if (SaveDataManager.Data != null) {
-                SaveDataManager.Data.IsTutor1Passed = true;
-                EntryPoint.SaveDataManager.Save();
-            }
+            yield return ShowScene4();
         }
 
         private IEnumerator ShowScene1() {
@@ -128,28 +147,42 @@ namespace DefaultNamespace {
             
             Player.Spine.SetAnimation("idle", true);
         }
-        
+
         private IEnumerator ShowScene2() {
-            yield return new WaitForSeconds(1f);
+            Player.IsLockedMovement = true;
+            Player.PopUp.Show("Oh no! My TV is broken...");
+            yield return new WaitForSeconds(2f);
+            Player.IsLockedMovement = true;
+            Player.PopUp.Show("I need to find all parts before\nI can get back home!");
+            
+            if (SaveDataManager.Data != null) {
+                SaveDataManager.Data.IsTutor1Passed = true;
+                EntryPoint.SaveDataManager.Save();
+            }
+        }
+
+        private IEnumerator ShowScene3() {
+            yield return new WaitForSeconds(2f);
             _movingTutorActivated = true;
             Player.IsLockedMovement = false;
+            Player.PopUp.Hide();
             UIManager.SetWASDVisibility(true);
             yield return new WaitUntil(() => !_movingTutorActivated);
             UIManager.SetWASDVisibility(false);
         }
 
-        private IEnumerator ShowScene3() {
+        private IEnumerator ShowScene4() {
             Hero.SetSpeakMode(true);
             Hero.gameObject.SetActive(true);
             Hero.SetDefendingMode(false);
-            // Hero.Spine.SetAnimation("Jump", true);
+            Hero.Spine.SetAnimation("Jump", true);
             Hero.Animation.Play("Appear");
 
             do {
                 yield return null;
             } while (Hero.Animation.IsPlaying("Appear"));
 
-            // Hero.Spine.SetAnimation("idle", true);
+            Hero.Spine.SetAnimation("idle", true);
 
             Hero.PopUp.Show("Don't run! It's pointless!");
             yield return new WaitForSeconds(2f);
@@ -166,14 +199,9 @@ namespace DefaultNamespace {
                 if (_movingTutorActivated) {
                     foreach (KeyCode keyCode in _moveControls) {
                         if (Input.GetKeyDown(keyCode)) {
-                            if (!_moveControlsUsed.Contains(keyCode)) {
-                                _moveControlsUsed.Add(keyCode);
-                            }
+                            _movingTutorActivated = false;
+                            return;
                         }
-                    }
-
-                    if (_moveControlsUsed.Count == _moveControls.Count) {
-                        _movingTutorActivated = false;
                     }
                 }
             }

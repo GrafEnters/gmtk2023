@@ -12,6 +12,8 @@ public class Player : Controllable {
     public bool IsPressE;
     public bool IsPressSpace;
 
+    public SpeechPopUp PopUp;
+
     public Animation Animation;
     
     [Header("Blast Ability")]
@@ -49,6 +51,18 @@ public class Player : Controllable {
             EntryPoint.Audio.PlayMusic(Music.central_location);
         } else {
             EntryPoint.Audio.PlayMusic(Music.level_soundtrack);
+        }
+    }
+    
+    protected override void Update() {
+        if (IsLockedMovement) {
+            return;
+        }
+        
+        if (_isUnderControl) {
+            CheckInputs();
+        } else {
+            TryGetControl();
         }
     }
 
