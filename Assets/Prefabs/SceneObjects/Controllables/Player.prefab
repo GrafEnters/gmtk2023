@@ -55,7 +55,7 @@ MonoBehaviour:
   _rb: {fileID: 3442725300676306784}
   _spine: {fileID: 3284580608562250907}
   _turnContainer: {fileID: 3203003384447072051}
-  moveSpeed: 5
+  moveSpeed: 3.5
   IsLockedMovement: 0
   IsPressE: 0
   IsPressSpace: 0
