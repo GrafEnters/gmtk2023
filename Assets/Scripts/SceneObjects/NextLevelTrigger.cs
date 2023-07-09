@@ -1,19 +1,29 @@
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
 public class NextLevelTrigger : MonoBehaviour {
     [SerializeField]
     private string sceneNameToLoad;
     [SerializeField]
-    private GameObject disableOnAwake;
+    private Animation _animation;
+    [SerializeField]
+    private Collider _collider;
+    [SerializeField]
+    private NavMeshObstacle _obstacle;
+
+    public bool IsOpenedByDefault;
+    
     private bool _onTriggered;
 
     [SerializeField]
     private bool IsDisablingCubesOnAwake = false;
 
-    private void Awake() {
-        disableOnAwake.SetActive(false);
+    private void Start() {
+        if (IsOpenedByDefault) {
+            SetOpened();
+        }
     }
 
     public void OnTriggerEnter(Collider other) {
@@ -40,5 +50,21 @@ public class NextLevelTrigger : MonoBehaviour {
             Destroy(availablePlayer.gameObject);
         }
         Player.Instance.gameObject.SetActive(true);
+    }
+
+    public void OpenDoor() {
+        _animation.Play("Open");
+        _obstacle.enabled = false;
+        _collider.isTrigger = true;
+    }
+
+    public void CloseDoor() {
+        
+    }
+
+    public void SetOpened() {
+        _animation.Play("Opened");
+        _obstacle.enabled = false;
+        _collider.isTrigger = true;
     }
 }
