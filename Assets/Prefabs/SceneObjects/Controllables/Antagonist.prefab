@@ -60,7 +60,12 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 825014be760017d488dbbbf2ce0f9bf1, type: 2}
+  - {fileID: 2100000, guid: b02d9e8e5548e534bbe01587ff5d0882, type: 2}
+  - {fileID: 2100000, guid: 21b462e8bc262b3418bc99105832d534, type: 2}
+  - {fileID: 2100000, guid: b02d9e8e5548e534bbe01587ff5d0882, type: 2}
+  - {fileID: 2100000, guid: 21b462e8bc262b3418bc99105832d534, type: 2}
+  - {fileID: 2100000, guid: b02d9e8e5548e534bbe01587ff5d0882, type: 2}
+  - {fileID: 2100000, guid: 21b462e8bc262b3418bc99105832d534, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 6ed475535feeb6d4d8c52f946a407ef7, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 695443f56ce1761438f87e81af6b062a, type: 2}
   initialSkinName: 
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
@@ -211,7 +216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8497259305557043228, guid: bad508305e4324e0bab74ee22c6debd7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.067
+      value: 1.114
       objectReference: {fileID: 0}
     - target: {fileID: 8497259305557043228, guid: bad508305e4324e0bab74ee22c6debd7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -231,11 +236,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8497259305557043228, guid: bad508305e4324e0bab74ee22c6debd7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.39
+      value: 0.534
       objectReference: {fileID: 0}
     - target: {fileID: 8497259305557043228, guid: bad508305e4324e0bab74ee22c6debd7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.221
+      value: 1.302
       objectReference: {fileID: 0}
     - target: {fileID: 8497259305557043228, guid: bad508305e4324e0bab74ee22c6debd7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
