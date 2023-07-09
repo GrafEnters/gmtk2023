@@ -15,6 +15,8 @@ public class MainAntagonist : Enemy {
     public float defenderSpeed = 0.01f;
     private float angle;
 
+    protected override bool IsSupportReincarnation => false;
+    
     public void SetSpeakMode(bool isSpeaking) {
         _isSpeaking = isSpeaking;
     }

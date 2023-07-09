@@ -63,7 +63,7 @@ namespace DefaultNamespace {
                             };
                         }
                     
-                        UIManager.ShowBottomText("PRESS LEFT MOUSE BUTTON", Color.white);
+                        UIManager.ShowBottomText("USE LMB TO PUSH BACK ENEMIES", Color.white);
                     } else if (!SaveDataManager.Data.IsTutor3Passed) {
                         foreach (Gnome gnome in objects) {
                             gnome.OnUnderControl += delegate {
@@ -73,7 +73,7 @@ namespace DefaultNamespace {
                             };
                         }
                     
-                        UIManager.ShowBottomText("PRESS RIGHT MOUSE BUTTON", Color.white);
+                        UIManager.ShowBottomText("USE RMB TO POSSESS SOMEONE OR LEAVE A POSSESSED BODY", Color.white);
                     }
                 }
             }
@@ -139,22 +139,23 @@ namespace DefaultNamespace {
         }
 
         private IEnumerator ShowScene3() {
-            Hero.gameObject.SetActive(true);
             Hero.SetSpeakMode(true);
+            Hero.gameObject.SetActive(true);
             Hero.SetDefendingMode(false);
-            Hero.Spine.SetAnimation("Jump", true);
+            // Hero.Spine.SetAnimation("Jump", true);
             Hero.Animation.Play("Appear");
+
             do {
                 yield return null;
             } while (Hero.Animation.IsPlaying("Appear"));
-            
-            Hero.Spine.SetAnimation("idle", true);
 
-            Hero.PopUp.Show("Im gonna llik you! Hahah ah!");
+            // Hero.Spine.SetAnimation("idle", true);
+
+            Hero.PopUp.Show("Don't run! It's pointless!");
             yield return new WaitForSeconds(2f);
-            Hero.PopUp.Show("Paw pau!");
+            Hero.PopUp.Show("I will catch you\nand then destroy you!");
             yield return new WaitForSeconds(1f);
-            Hero.PopUp.Show("RUUUN!!");
+            Hero.PopUp.Show("R-U-U-U-N!!!");
             Hero.SetSpeakMode(false);
             yield return new WaitForSeconds(3f);
             Hero.PopUp.Hide();
