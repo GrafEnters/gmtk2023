@@ -18,6 +18,12 @@ public class BigElf : Elf {
         } else {
             arrow.SetFlyDirection(Quaternion.Euler(0, -15, 0) * dir, _arrowSpeed, isPlayer, this);
         }
+        arrow = Instantiate(_arrowPrefab, transform.position + Vector3.up * 0.5f, Quaternion.identity);
+        if (isPlayer) {
+            arrow.SetFlyDirection( dir, _arrowSpeed, isPlayer);
+        } else {
+            arrow.SetFlyDirection( dir, _arrowSpeed, isPlayer, this);
+        }
     }
 
     public override void OnHit(Controllable @from) {

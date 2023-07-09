@@ -4332,7 +4332,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7012993228128613972, guid: e13aa0bf053a2924986a2ab69da8ded5, type: 3}
       propertyPath: IsOpenedByDefault
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e13aa0bf053a2924986a2ab69da8ded5, type: 3}
@@ -4357,6 +4357,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1341642683 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7012993228128613972, guid: e13aa0bf053a2924986a2ab69da8ded5, type: 3}
+  m_PrefabInstance: {fileID: 1341642680}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341642681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff43bc37719d17498562ca30ff8b3b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1343271055
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4547,23 +4558,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 308072255513320940, guid: 2e4b53a32a81a4a92a68aa014cdd89d8, type: 3}
       propertyPath: _onPickup.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 308072255513320940, guid: 2e4b53a32a81a4a92a68aa014cdd89d8, type: 3}
       propertyPath: _onPickup.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1341642683}
     - target: {fileID: 308072255513320940, guid: 2e4b53a32a81a4a92a68aa014cdd89d8, type: 3}
       propertyPath: _onPickup.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 308072255513320940, guid: 2e4b53a32a81a4a92a68aa014cdd89d8, type: 3}
       propertyPath: _onPickup.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
+      value: OpenDoor
       objectReference: {fileID: 0}
     - target: {fileID: 308072255513320940, guid: 2e4b53a32a81a4a92a68aa014cdd89d8, type: 3}
       propertyPath: _onPickup.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: NextLevelTrigger, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 308072255513320940, guid: 2e4b53a32a81a4a92a68aa014cdd89d8, type: 3}
       propertyPath: _onPickup.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
