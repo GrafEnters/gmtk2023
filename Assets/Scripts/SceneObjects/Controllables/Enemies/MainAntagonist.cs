@@ -31,6 +31,8 @@ public class MainAntagonist : Enemy {
         }
     }
 
+    protected override bool IsSupportReincarnation => false;
+    
     public void SetSpeakMode(bool isSpeaking) {
         _isSpeaking = isSpeaking;
     }

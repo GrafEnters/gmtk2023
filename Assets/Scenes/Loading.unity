@@ -1201,7 +1201,7 @@ PrefabInstance:
       objectReference: {fileID: 604925024}
     - target: {fileID: 4932861366405282484, guid: 22fedc107e6d32548b270c193b046987, type: 3}
       propertyPath: IsEraseDataEveryTime
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6233998475537963999, guid: 22fedc107e6d32548b270c193b046987, type: 3}
       propertyPath: m_Name

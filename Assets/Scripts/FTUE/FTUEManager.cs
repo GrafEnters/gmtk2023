@@ -175,7 +175,7 @@ namespace DefaultNamespace {
             Hero.SetSpeakMode(true);
             Hero.gameObject.SetActive(true);
             Hero.SetDefendingMode(false);
-            Hero.Spine.SetAnimation("Jump", true);
+            // Hero.Spine.SetAnimation("Jump", true);
             Hero.Animation.Play("Appear");
 
             do {
