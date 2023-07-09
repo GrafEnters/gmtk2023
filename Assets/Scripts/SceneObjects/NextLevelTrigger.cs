@@ -79,7 +79,11 @@ public class NextLevelTrigger : MonoBehaviour {
     public void CloseDoor() { }
 
     public void SetOpened() {
-        _animation.Play("Opened");
+        try {
+            _animation.Play("Opened");
+        }
+        catch { }
+      
         _obstacle.enabled = false;
         _collider.isTrigger = true;
     }
