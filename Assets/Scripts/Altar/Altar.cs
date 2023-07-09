@@ -36,7 +36,7 @@ namespace DefaultNamespace {
 
         private void OnTriggerEnter(Collider other) {
             if (other.GetComponent<Player>()) {
-                UIManager.Instance.ShowBottomText("PRESS E TO OPEN PORTAL", Color.green);
+                UIManager.Instance.ShowBottomText("PRESS 'E' TO OPEN PORTAL", Color.white);
             }
         }
 
