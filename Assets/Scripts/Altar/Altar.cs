@@ -7,9 +7,16 @@ namespace DefaultNamespace {
 
         public float ActivateDuration;
         public Action OnAltarAssembled;
+
+        [SerializeField]
+        private CarryableObject _first;
+        [SerializeField]
+        private CarryableObject _second;
+        [SerializeField]
+        private CarryableObject _third;
         [SerializeField]
         private List<AltarSpot> _spots = new List<AltarSpot>();
-        private List<CarryableObject.Type> _collected = new List<CarryableObject.Type>();
+        private static List<CarryableObject.Type> _collected = new List<CarryableObject.Type>();
         private long _startActivatingTime;
 
         private bool _isActivating;
@@ -17,8 +24,18 @@ namespace DefaultNamespace {
         private Vector3 _startedActivatorPosition;
 
         private void Start() {
+            Dictionary<CarryableObject.Type, CarryableObject> map =
+                new Dictionary<CarryableObject.Type, CarryableObject>() {
+                    { CarryableObject.Type.Box, _first },
+                    { CarryableObject.Type.Antenna, _second },
+                    { CarryableObject.Type.RemoteController, _third },
+                };
+            
             foreach (AltarSpot altarSpot in _spots) {
                 altarSpot.SetCollectCallback(OnCollected);
+                if (_collected.Contains(altarSpot.type)) {
+                    altarSpot.PutCarryableObjecToSpot(Instantiate(map[altarSpot.type]));
+                }
             }
         }
 
