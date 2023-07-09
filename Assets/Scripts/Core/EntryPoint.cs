@@ -25,6 +25,9 @@ namespace DefaultNamespace {
 
         public void Awake() {
             if (!TryCreateSingleton()) {
+                if (instance != this) {
+                    Destroy(gameObject);
+                }
                 return;
             }
 
@@ -46,7 +49,7 @@ namespace DefaultNamespace {
             //_loading.StartFakeLoading(null);
             _inputHeroName.StartCoroutine(_inputHeroName.WaitForHeroName(_comics.Init));
 
-
+            DontDestroyOnLoad(gameObject);
             //TODO init all systems and loading screen, then launch game
         }
 
