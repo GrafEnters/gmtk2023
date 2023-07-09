@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public abstract class Enemy : Controllable {
+    public Action OnStun;
+    public Action OnUnderControl;
     public float ReachTargetDistance = 1;
     public float BlindZoneOut = 4f;
 
@@ -18,6 +21,7 @@ public abstract class Enemy : Controllable {
 
     public virtual void Stun() {
         StartCoroutine(WaitForStunEnd());
+        OnStun?.Invoke();
     }
 
     private void LateUpdate() {
@@ -94,6 +98,7 @@ public abstract class Enemy : Controllable {
         base.StartControl();
         _isStunned = false;
         _navMeshAgent.isStopped = true;
+        OnUnderControl?.Invoke();
     }
 
     public override void EndControl() {

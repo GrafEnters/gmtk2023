@@ -23,14 +23,20 @@ namespace DefaultNamespace {
         };
 
         private static bool isStarted;
-        
+
+        public static FTUEManager Instance;
         private void Awake() {
-            if (SaveDataManager.Data.IsSTUEPassed) {
+            if (Instance == null) {
+                Instance = this;
+                DontDestroyOnLoad(this);
+            }
+            
+            if (SaveDataManager.Data.IsTutor2Passed) {
                 _leftDoor.SetOpened();
                 _rightDoor.SetOpened();
             }
-            
-            if (SaveDataManager.Data.IsFTUEPassed && !isStarted) {
+
+            if (SaveDataManager.Data.IsTutor1Passed && !isStarted) {
                 Hero.gameObject.SetActive(true);
             } else {
                 Hero.gameObject.SetActive(false);
@@ -45,8 +51,58 @@ namespace DefaultNamespace {
 
         private void OnActiveSceneChanged(Scene prev, Scene next) {
             if (next.name.Contains("Gnome")) {
-                SaveDataManager.Data.IsSTUEPassed = true;
-                EntryPoint.SaveDataManager.Save();
+                Gnome[] objects = GetComponentsInRootObjects<Gnome>(next);
+                if (objects.Length > 0) {
+
+                    if (!SaveDataManager.Data.IsTutor2Passed) {
+                        foreach (Gnome gnome in objects) {
+                            gnome.OnStun += delegate {
+                                SaveDataManager.Data.IsTutor2Passed = true;
+                                EntryPoint.SaveDataManager.Save();
+                                UIManager.HideBottomText();
+                            };
+                        }
+                    
+                        UIManager.ShowBottomText("PRESS LEFT MOUSE BUTTON", Color.white);
+                    } else if (!SaveDataManager.Data.IsTutor3Passed) {
+                        foreach (Gnome gnome in objects) {
+                            gnome.OnUnderControl += delegate {
+                                SaveDataManager.Data.IsTutor3Passed = true;
+                                EntryPoint.SaveDataManager.Save();
+                                UIManager.HideBottomText();
+                            };
+                        }
+                    
+                        UIManager.ShowBottomText("PRESS RIGHT MOUSE BUTTON", Color.white);
+                    }
+                }
+            }
+        }
+        
+        public static T[] GetComponentsInRootObjects<T>(Scene scene)
+        {
+            GameObject[] rootObjects = scene.GetRootGameObjects();
+            var components = new List<T>();
+
+            for (int i = 0; i < rootObjects.Length; i++)
+            {
+                GetComponentsInChildren(rootObjects[i].transform, components);
+            }
+
+            return components.ToArray();
+        }
+
+        private static void GetComponentsInChildren<T>(Transform transform, List<T> components)
+        {
+            T component = transform.GetComponent<T>();
+            if (component != null)
+            {
+                components.Add(component);
+            }
+
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                GetComponentsInChildren(transform.GetChild(i), components);
             }
         }
 
@@ -56,7 +112,7 @@ namespace DefaultNamespace {
             yield return ShowScene3();
             
             if (SaveDataManager.Data != null) {
-                SaveDataManager.Data.IsFTUEPassed = true;
+                SaveDataManager.Data.IsTutor1Passed = true;
                 EntryPoint.SaveDataManager.Save();
             }
         }
