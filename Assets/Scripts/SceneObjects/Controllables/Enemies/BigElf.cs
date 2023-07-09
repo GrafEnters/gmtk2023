@@ -5,6 +5,7 @@ public class BigElf : Elf {
         Arrow arrow = Instantiate(_arrowPrefab, transform.position + Vector3.up * 0.5f, Quaternion.identity);
 
         Vector3 dir = (target - transform.position).normalized;
+        RotateSpriteHorizontallyWhenMove(dir);
         if (isPlayer) {
             arrow.SetFlyDirection(Quaternion.Euler(0, 15, 0) * dir, _arrowSpeed, isPlayer);
         } else {

@@ -40,8 +40,8 @@ public class Elf : Enemy {
             yield break;
         }
 
-        ShootAbility(target, isPlayer);
         yield return StartCoroutine(_spine.ShowSpineAnimation("attack"));
+        ShootAbility(target, isPlayer);
         _spine.SetAnimation("idle");
         if (!_isUnderControl) {
             yield return new WaitForSeconds(_reloadTime);
@@ -53,6 +53,7 @@ public class Elf : Enemy {
 
     protected virtual void ShootAbility(Vector3 target, bool isPlayer) {
         Arrow arrow = Instantiate(_arrowPrefab, transform.position + Vector3.up * 0.5f, Quaternion.identity);
+        RotateSpriteHorizontallyWhenMove(target - transform.position);
         if (isPlayer) {
             arrow.SetFlyDirection(target - transform.position, _arrowSpeed, isPlayer);
         } else {

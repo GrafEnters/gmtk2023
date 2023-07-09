@@ -29,12 +29,14 @@ public abstract class Controllable : MonoBehaviour, IControllable {
     private const float MIN_DISTANCE_TO_HAUNT = 1.5f;
     private bool _isMouseIn;
     private bool _isMousePressed;
-    protected bool IsLockedMovement;
+    public bool IsLockedMovement;
 
     protected virtual bool IsSupportReincarnation => true;
 
     private void Start() {
-        _spine.SetAnimation("idle");
+        if (!IsLockedMovement) {
+            _spine.SetAnimation("idle");
+        }
     }
 
     protected virtual void FixedUpdate() {

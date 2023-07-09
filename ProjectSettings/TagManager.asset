@@ -7,6 +7,7 @@ TagManager:
   - Rock
   - BigRock
   - Obstacle
+  - Crystal
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - Floor
   - Enemy
   - Arrow
-  - 
-  - 
+  - BigArrow
+  - BigElf
   - 
   - 
   - 

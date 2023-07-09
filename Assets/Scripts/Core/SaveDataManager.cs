@@ -1,10 +1,9 @@
-﻿using UnityEngine;
-using ZhukovskyGamesPlugin;
+﻿using ZhukovskyGamesPlugin;
 
 namespace DefaultNamespace {
     public class SaveDataManager {
         private const string dataPath = "GAME_DATA";
-        public static GameData Data;
+        public static GameData Data = new GameData();
 
         public void Load() {
             Data = JsonPrefsSaveLoadManager.Load<GameData>(dataPath);

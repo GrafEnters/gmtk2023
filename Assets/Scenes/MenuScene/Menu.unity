@@ -837,16 +837,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: ElfLevelTrigger
       objectReference: {fileID: 0}
+    - target: {fileID: 3645017012697388687, guid: e13aa0bf053a2924986a2ab69da8ded5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7012993228128613972, guid: e13aa0bf053a2924986a2ab69da8ded5, type: 3}
       propertyPath: sceneNameToLoad
       value: Elf1
       objectReference: {fileID: 0}
     - target: {fileID: 7012993228128613972, guid: e13aa0bf053a2924986a2ab69da8ded5, type: 3}
       propertyPath: IsOpenedByDefault
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e13aa0bf053a2924986a2ab69da8ded5, type: 3}
+--- !u!114 &262448541 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7012993228128613972, guid: e13aa0bf053a2924986a2ab69da8ded5, type: 3}
+  m_PrefabInstance: {fileID: 262448540}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff43bc37719d17498562ca30ff8b3b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &273957107
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3140,6 +3155,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GnomeLevelTrigger
       objectReference: {fileID: 0}
+    - target: {fileID: 3645017012697388687, guid: e13aa0bf053a2924986a2ab69da8ded5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3645017013112478251, guid: e13aa0bf053a2924986a2ab69da8ded5, type: 3}
       propertyPath: m_Size.y
       value: 2
@@ -4278,16 +4297,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: FairyLevelTrigger
       objectReference: {fileID: 0}
+    - target: {fileID: 3645017012697388687, guid: e13aa0bf053a2924986a2ab69da8ded5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7012993228128613972, guid: e13aa0bf053a2924986a2ab69da8ded5, type: 3}
       propertyPath: sceneNameToLoad
       value: Fairy1
       objectReference: {fileID: 0}
     - target: {fileID: 7012993228128613972, guid: e13aa0bf053a2924986a2ab69da8ded5, type: 3}
       propertyPath: IsOpenedByDefault
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e13aa0bf053a2924986a2ab69da8ded5, type: 3}
+--- !u!114 &1553276538 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7012993228128613972, guid: e13aa0bf053a2924986a2ab69da8ded5, type: 3}
+  m_PrefabInstance: {fileID: 1553276537}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff43bc37719d17498562ca30ff8b3b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1595391252
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4847,10 +4881,6 @@ PrefabInstance:
       propertyPath: radius
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 4137835008542363050, guid: 64aff379168a94da780ad0d6ddf49266, type: 3}
-      propertyPath: ReachTargetDistance
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5143271418764337527, guid: 64aff379168a94da780ad0d6ddf49266, type: 3}
       propertyPath: m_Name
       value: Antagonist
@@ -5152,7 +5182,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3203003384447072051, guid: ae06ca96dee757b419cd9332fec7717d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.35
+      value: 3.52
       objectReference: {fileID: 0}
     - target: {fileID: 3203003384447072051, guid: ae06ca96dee757b419cd9332fec7717d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5160,7 +5190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3203003384447072051, guid: ae06ca96dee757b419cd9332fec7717d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.93
+      value: -5.4
       objectReference: {fileID: 0}
     - target: {fileID: 3203003384447072051, guid: ae06ca96dee757b419cd9332fec7717d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5766,6 +5796,8 @@ MonoBehaviour:
   Player: {fileID: 1544926037}
   Hero: {fileID: 1159551596}
   UIManager: {fileID: 544679182}
+  _leftDoor: {fileID: 1553276538}
+  _rightDoor: {fileID: 262448541}
 --- !u!1 &2126269759
 GameObject:
   m_ObjectHideFlags: 0

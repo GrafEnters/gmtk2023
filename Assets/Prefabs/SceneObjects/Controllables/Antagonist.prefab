@@ -102,7 +102,7 @@ MonoBehaviour:
   skeletonDataAsset: {fileID: 11400000, guid: 695443f56ce1761438f87e81af6b062a, type: 2}
   initialSkinName: 
   fixPrefabOverrideViaMeshFilter: 2
-  initialFlipX: 0
+  initialFlipX: 1
   initialFlipY: 0
   updateWhenInvisible: 3
   separatorSlotNames: []
@@ -124,8 +124,8 @@ MonoBehaviour:
   disableRenderingOnOverride: 1
   updateTiming: 1
   unscaledTime: 0
-  _animationName: 
-  loop: 1
+  _animationName: rush
+  loop: 0
   timeScale: 1
 --- !u!1001 &5034357787960540479
 PrefabInstance:
@@ -465,14 +465,14 @@ MonoBehaviour:
   _spine: {fileID: 4719873600857638108}
   _turnContainer: {fileID: 6403928015089585391}
   moveSpeed: 12
-  ReachTargetDistance: 1.2
+  ReachTargetDistance: 5
   BlindZoneOut: 4
   distanceToBreak: 2
   Animation: {fileID: 8268137125212563571}
   PopUp: {fileID: 5504736413107938050}
   defaultSpeed: 3.5
-  defenderRadius: 1.5
-  defenderSpeed: 3.5
+  defenderRadius: 2
+  defenderSpeed: 0.03
 --- !u!114 &4719873600857638108
 MonoBehaviour:
   m_ObjectHideFlags: 0
