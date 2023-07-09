@@ -299,6 +299,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActivateDuration: 0
+  _first: {fileID: 308072255513320940, guid: 2e4b53a32a81a4a92a68aa014cdd89d8, type: 3}
+  _second: {fileID: 308072255513320940, guid: 36fd8f7a19cae41df86022d9526e23a1, type: 3}
+  _third: {fileID: 308072255513320940, guid: ae5dd84ff1d21413183021c75217980d, type: 3}
   _spots:
   - {fileID: 6465194677753116263}
   - {fileID: 9182117825439720988}
