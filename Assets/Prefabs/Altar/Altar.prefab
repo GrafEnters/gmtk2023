@@ -258,6 +258,7 @@ GameObject:
   - component: {fileID: 5665539281001364308}
   - component: {fileID: 7010145030113669120}
   - component: {fileID: 5249132455474903354}
+  - component: {fileID: 8327920570072935644}
   m_Layer: 0
   m_Name: Altar
   m_TagString: Untagged
@@ -332,6 +333,26 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &8327920570072935644
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9056989213940335210}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 71f873878111809439b016870d278513, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1001 &631422011667597068
 PrefabInstance:
   m_ObjectHideFlags: 0
