@@ -1,37 +1,33 @@
 using UnityEngine;
 
-public class CameraFollow : MonoBehaviour
-{
-    public Transform target;
+public class CameraFollow : MonoBehaviour {
+    public float smoothSpeed = 0.1f;
 
     public bool isCustomOffset;
     public Vector3 offset;
 
-    public float smoothSpeed = 0.1f;
+    private Transform _target;
 
-    private void Start()
-    {
-        // You can also specify your own offset from inspector
-        // by making isCustomOffset bool to true
-        target = Controllable.CurrentUnderControl.transform;
-        if (!isCustomOffset && target)
-        {
-            offset = transform.position - target.position;
+    private void Start() {
+        FindTarget();
+        if (!isCustomOffset) {
+            offset = transform.position - _target.position;
         }
     }
 
     private void LateUpdate() {
-        target = Controllable.CurrentUnderControl.transform;
-        SmoothFollow();   
+        SmoothFollow();
     }
 
-    public void SmoothFollow()
-    {
-        Vector3 targetPos = target.position + offset;
-        Vector3 smoothFollow = Vector3.Lerp(transform.position,
+    private void FindTarget() {
+        _target = Controllable.CurrentUnderControl.transform;
+    }
+
+    private void SmoothFollow() {
+        Vector3 targetPos = _target.position + offset;
+        Vector3 smoothFollow = Vector3.Slerp(transform.position,
             targetPos, smoothSpeed);
 
         transform.position = smoothFollow;
-        transform.LookAt(target);
     }
 }
