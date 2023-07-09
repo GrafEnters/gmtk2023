@@ -263,6 +263,7 @@ MonoBehaviour:
   _spine: {fileID: 8486868140586761525}
   moveSpeed: 3
   ReachTargetDistance: 2
+  BlindZoneOut: 3
   distanceToBreak: 2
   _spriteRenderer: {fileID: 0}
 --- !u!114 &8486868140586761525
@@ -305,7 +306,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f7f6b665937db6642a447e5a3f89482d, type: 2}
+  - {fileID: 2100000, guid: 028af00a95f2add48b1c012c6be5d4f2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

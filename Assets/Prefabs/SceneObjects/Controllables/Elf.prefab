@@ -296,9 +296,11 @@ MonoBehaviour:
   _spine: {fileID: 4353874787416356578}
   moveSpeed: 3
   ReachTargetDistance: 5
+  BlindZoneOut: 10
   distanceToBreak: 2
   _arrowPrefab: {fileID: 620802160836642252, guid: 15d5e2a74d0769345a11794ee54560e8, type: 3}
   _arrowSpeed: 0.1
+  _reloadTime: 2.5
 --- !u!23 &2343678974231198463
 MeshRenderer:
   m_ObjectHideFlags: 0

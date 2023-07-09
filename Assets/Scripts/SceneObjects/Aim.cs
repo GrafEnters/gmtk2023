@@ -36,6 +36,7 @@ public class Aim : MonoBehaviour {
             Destroy(gameObject);
         } else {
             _isShot = false;
+            _animation.Play("NewAim");
         }
     }
 }

@@ -34,6 +34,9 @@ public class Arrow : MonoBehaviour {
         if (other.attachedRigidbody.GetComponent<Player>() != null && !_isPlayerShot) {
             other.attachedRigidbody.GetComponent<Player>().OnHit(_enemy);
         }
+        if (Controllable.CurrentUnderControl.transform == other.attachedRigidbody.transform && other.attachedRigidbody.GetComponent<BigElf>() != null ) {
+            other.attachedRigidbody.GetComponent<BigElf>().OnHit(_enemy);
+        }
 
         Destroy(gameObject);
     }

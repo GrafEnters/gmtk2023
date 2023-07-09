@@ -16,7 +16,7 @@ public class SmartAim : MonoBehaviour {
     [SerializeField]
     private UnityEvent _onBothHit;
 
-    private float multiplier = 1, multiplier2 = 2;
+    private float multiplier = 1, multiplier2 = -1;
     private int hitAmount = 0;
 
     private void Start() {

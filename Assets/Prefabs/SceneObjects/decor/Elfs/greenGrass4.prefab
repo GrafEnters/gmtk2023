@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: greenGrass4
       objectReference: {fileID: 0}
+    - target: {fileID: 5083468000463050294, guid: d3a0fd4fb119d894ba24e24a231e375c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5261079276694091506, guid: d3a0fd4fb119d894ba24e24a231e375c, type: 3}
       propertyPath: m_Sprite
       value: 
