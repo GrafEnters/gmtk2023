@@ -15,7 +15,7 @@ namespace DefaultNamespace {
             if (!_spine) {
                 return;
             }
-            _spine.state.SetAnimation(0, key, false);
+            _spine.AnimationState.SetAnimation(0, key, false);
         }
         
         public void SetSpineWalkOrIdle(Vector3 dir) {
@@ -35,13 +35,10 @@ namespace DefaultNamespace {
         }
 
         public IEnumerator ShowSpineAnimation(string key) {
-            float dur = 1f;
-            TrackEntry stunnedAnimation = _spine.state.Tracks.Items.FirstOrDefault(entry => entry.Animation.Name == key);
-            if (stunnedAnimation != null) {
-                SetAnimation(key);
-                dur = _spine.skeletonDataAsset.GetSkeletonData(true).Animations.FirstOrDefault(p => p.Name == key)
-                    .Duration;
-            }
+            SetAnimation(key);
+            float dur = _spine.skeletonDataAsset.GetSkeletonData(true).Animations.FirstOrDefault(p => p.Name == key)
+                .Duration;
+
             yield return new WaitForSeconds(dur);
         }
     }

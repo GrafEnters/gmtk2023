@@ -78,7 +78,7 @@ public abstract class Enemy : Controllable {
 
     protected virtual void OnStunEnd() { }
 
-    private IEnumerator WaitForStunEnd() {
+    protected virtual IEnumerator WaitForStunEnd() {
         _navMeshAgent.isStopped = true;
         _rb.detectCollisions = false;
         _rb.velocity = Vector3.zero;
