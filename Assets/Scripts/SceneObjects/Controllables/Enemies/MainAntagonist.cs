@@ -18,6 +18,8 @@ public class MainAntagonist : Enemy {
     private float angle;
     
 
+    protected override bool IsSupportReincarnation => false;
+    
     public void SetSpeakMode(bool isSpeaking) {
         _isSpeaking = isSpeaking;
     }

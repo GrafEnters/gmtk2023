@@ -13,6 +13,8 @@ namespace DefaultNamespace {
         private Image _lkm, _pkm;
 
         [SerializeField]
+        private GameObject _hint;
+        [SerializeField]
         private TextMeshProUGUI _bottomTextField;
 
         [SerializeField]
@@ -28,13 +30,13 @@ namespace DefaultNamespace {
         }
 
         public void ShowBottomText(string text, Color color) {
-            _bottomTextField.gameObject.SetActive(true);
+            _hint.gameObject.SetActive(true);
             _bottomTextField.text = text;
             _bottomTextField.color = color;
         }
 
         public void HideBottomText() {
-            _bottomTextField.gameObject.SetActive(false);
+            _hint.gameObject.SetActive(false);
             _bottomTextField.color = Color.white;
             _bottomTextField.text = "";
         }
