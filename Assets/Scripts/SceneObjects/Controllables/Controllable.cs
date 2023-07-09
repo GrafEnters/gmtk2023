@@ -1,6 +1,4 @@
-using System;
 using DefaultNamespace;
-using Spine.Unity;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -20,18 +18,25 @@ public abstract class Controllable : MonoBehaviour, IControllable {
     protected SpineHandler _spine;
 
     [SerializeField]
+    protected Transform _turnContainer;
+    
+    public SpineHandler Spine => _spine;
+
+    [SerializeField]
     protected float moveSpeed;
 
     protected bool _isUnderControl;
     private const float MIN_DISTANCE_TO_HAUNT = 1.5f;
     private bool _isMouseIn;
     private bool _isMousePressed;
-    protected bool IsLockedMovement;
+    public bool IsLockedMovement;
 
     protected virtual bool IsSupportReincarnation => true;
 
     private void Start() {
-        _spine.SetAnimation("idle");
+        if (!IsLockedMovement) {
+            _spine.SetAnimation("idle");
+        }
     }
 
     protected virtual void FixedUpdate() {
@@ -92,13 +97,13 @@ public abstract class Controllable : MonoBehaviour, IControllable {
         if (dir.x > 0) {
             Vector3 localScale = _spine.transform.localScale;
             localScale.x = -Mathf.Abs(localScale.x);
-            _spine.transform.localScale = localScale;
+            _turnContainer.localScale = localScale;
         }
 
         if (dir.x < 0) {
             Vector3 localScale = _spine.transform.localScale;
             localScale.x = Mathf.Abs(localScale.x);
-            _spine.transform.localScale = localScale;
+            _turnContainer.localScale = localScale;
         }
     }
 

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4693182621049601521}
   - component: {fileID: 5188964656910671401}
   - component: {fileID: 3284580608562250907}
+  - component: {fileID: 861108550654865507}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -52,9 +53,12 @@ MonoBehaviour:
   _obvodka: {fileID: 0}
   _rb: {fileID: 3442725300676306784}
   _spine: {fileID: 3284580608562250907}
+  _turnContainer: {fileID: 3203003384447072051}
   moveSpeed: 5
+  IsLockedMovement: 0
   IsPressE: 0
   IsPressSpace: 0
+  Animation: {fileID: 861108550654865507}
   length: 1.5
   width: 0.9
   knockbackPower: 0.3
@@ -123,6 +127,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spine: {fileID: 2571699436883058713}
+--- !u!111 &861108550654865507
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081479863404441631}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 8080bd2b3850e4b599234d9c8ea5cebf, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 8080bd2b3850e4b599234d9c8ea5cebf, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &2522034126471410298
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,7 +262,7 @@ MonoBehaviour:
   disableRenderingOnOverride: 1
   updateTiming: 1
   unscaledTime: 0
-  _animationName: idle
+  _animationName: Jump
   loop: 1
   timeScale: 1
 --- !u!1 &7706982234369232560

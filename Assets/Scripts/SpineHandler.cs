@@ -1,7 +1,5 @@
 ﻿using System.Collections;
 using System.Linq;
-using System.Runtime.InteropServices;
-using Spine;
 using Spine.Unity;
 using UnityEngine;
 
@@ -11,11 +9,13 @@ namespace DefaultNamespace {
         [SerializeField]
         private SkeletonAnimation _spine;
 
-        public void SetAnimation(string key) {
+        public void SetAnimation(string key, bool loop = false) {
             if (!_spine) {
                 return;
             }
-            _spine.AnimationState.SetAnimation(0, key, false);
+            if (_spine.AnimationState.GetCurrent(0)?.Animation.Name != key) {
+                _spine.AnimationState.SetAnimation(0, key, loop);
+            }
         }
         
         public void SetSpineWalkOrIdle(Vector3 dir) {
@@ -36,8 +36,7 @@ namespace DefaultNamespace {
 
         public IEnumerator ShowSpineAnimation(string key) {
             SetAnimation(key);
-            float dur = _spine.skeletonDataAsset.GetSkeletonData(true).Animations.FirstOrDefault(p => p.Name == key)
-                .Duration;
+            float dur = _spine.skeletonDataAsset.GetSkeletonData(true).Animations.FirstOrDefault(p => p.Name == key).Duration;
 
             yield return new WaitForSeconds(dur);
         }

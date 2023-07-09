@@ -10,6 +10,8 @@ public class Player : Controllable {
     public bool IsPressE;
     public bool IsPressSpace;
 
+    public Animation Animation;
+    
     [Header("Blast Ability")]
     [SerializeField]
     private float length = 2.5f;
@@ -39,15 +41,6 @@ public class Player : Controllable {
         if (Input.GetKeyUp(KeyCode.E)) {
             IsPressE = false;
         }
-
-        //TODO Test controll
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            IsPressSpace = true;
-        }
-
-        if (Input.GetKeyUp(KeyCode.Space)) {
-            IsPressSpace = false;
-        }
     }
 
     protected override void MainAbility() {
@@ -76,7 +69,7 @@ public class Player : Controllable {
                 LayerMask.GetMask("Enemy"));
             foreach (var enemyHit in enemies) {
                 Vector3 hitDir = (enemyHit.point - transform.position).normalized;
-                enemyHit.rigidbody.GetComponent<Enemy>().Knockback(hitDir * knockbackPower);
+                enemyHit.rigidbody.GetComponent<Enemy>().Knockback(hitDir * knockbackPower * 3);
                 enemyHit.rigidbody.GetComponent<Enemy>().Stun();
             }
         }
@@ -130,11 +123,11 @@ public class Player : Controllable {
 
         float multiplier = 1;
         if (from is Gnome) {
-            multiplier = 0.1f;
+            multiplier = 0.4f;
         }
 
         if (from is BigGnome) {
-            multiplier = 0.2f;
+            multiplier = 0.8f;
         }
 
         if (from is Elf) {
@@ -142,7 +135,7 @@ public class Player : Controllable {
         }
 
         if (from is BigElf) {
-            multiplier = 1f;
+            multiplier = 0.5f;
         }
 
         Vector3 dir = transform.position - from.transform.position;

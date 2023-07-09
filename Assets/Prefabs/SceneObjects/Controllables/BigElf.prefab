@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2372112059551990385}
   - component: {fileID: 5713724717891550519}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Obvodka
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 925502415311869532, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 925502415311869532, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
       propertyPath: m_TagString
@@ -127,7 +127,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1753502792148394108, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1753502792148394108, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
       propertyPath: m_TagString
@@ -135,15 +135,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2283475283520566418, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2283475283520566418, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2283475283520566418, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2937487203345360720, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
       propertyPath: m_RootOrder
@@ -211,7 +211,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5048110140248589551, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5048110140248589551, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
       propertyPath: m_TagString
@@ -219,7 +219,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7945444949244485331, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7945444949244485331, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
       propertyPath: m_TagString
@@ -227,11 +227,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7955140368875887980, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 1.562
       objectReference: {fileID: 0}
     - target: {fileID: 7955140368875887980, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 1.562
+      objectReference: {fileID: 0}
+    - target: {fileID: 7955140368875887980, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.562
       objectReference: {fileID: 0}
     - target: {fileID: 7955140368875887980, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -243,6 +247,11 @@ PrefabInstance:
 --- !u!1 &7693629064858010365 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1753502792148394108, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
+  m_PrefabInstance: {fileID: 8255365987819496065}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6509107379592054225 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2937487203345360720, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
   m_PrefabInstance: {fileID: 8255365987819496065}
   m_PrefabAsset: {fileID: 0}
 --- !u!54 &5355428577113904796 stripped
@@ -281,11 +290,14 @@ MonoBehaviour:
   _obvodka: {fileID: 7025745453811919232}
   _rb: {fileID: 5355428577113904796}
   _spine: {fileID: 4880990791812742914}
+  _turnContainer: {fileID: 6509107379592054225}
   moveSpeed: 3
   ReachTargetDistance: 1
+  BlindZoneOut: 4
   distanceToBreak: 2
-  _arrowPrefab: {fileID: 620802160836642252, guid: 15d5e2a74d0769345a11794ee54560e8, type: 3}
+  _arrowPrefab: {fileID: 6694099385219518446, guid: 0e68510465fbc4e408f465ff5c039546, type: 3}
   _arrowSpeed: 0.5
+  _reloadTime: 2.5
 --- !u!114 &4880990791812742914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,7 +338,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f7f6b665937db6642a447e5a3f89482d, type: 2}
+  - {fileID: 2100000, guid: aa47b46190d321f419c512b40a9b2f7a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -360,7 +372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 09bdbe351d3ffc4409dd24c8aec6ebba, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 5240b8b115175874395731eca69d4c98, type: 2}
   initialSkinName: 
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 1

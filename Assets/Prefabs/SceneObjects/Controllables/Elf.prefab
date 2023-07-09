@@ -135,15 +135,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2283475283520566418, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2283475283520566418, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2283475283520566418, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2937487203345360720, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
       propertyPath: m_RootOrder
@@ -245,6 +245,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1753502792148394108, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
   m_PrefabInstance: {fileID: 1790555421345457892}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &3467025863958446516 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2937487203345360720, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
+  m_PrefabInstance: {fileID: 1790555421345457892}
+  m_PrefabAsset: {fileID: 0}
 --- !u!54 &2313701086008513273 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 4090040637381620765, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
@@ -294,6 +299,7 @@ MonoBehaviour:
   _obvodka: {fileID: 2184429483707998304}
   _rb: {fileID: 2313701086008513273}
   _spine: {fileID: 4353874787416356578}
+  _turnContainer: {fileID: 3467025863958446516}
   moveSpeed: 3
   ReachTargetDistance: 5
   BlindZoneOut: 10
@@ -320,7 +326,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f7f6b665937db6642a447e5a3f89482d, type: 2}
+  - {fileID: 2100000, guid: b1392a9cf7b9c7949bd94692df4c7231, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -362,7 +368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 09bdbe351d3ffc4409dd24c8aec6ebba, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 26327f8396a8f1f478115f05f8a3f15f, type: 2}
   initialSkinName: 
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 1
