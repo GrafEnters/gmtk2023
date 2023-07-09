@@ -123,11 +123,11 @@ public class Player : Controllable {
 
         float multiplier = 1;
         if (from is Gnome) {
-            multiplier = 0.1f;
+            multiplier = 0.4f;
         }
 
         if (from is BigGnome) {
-            multiplier = 0.2f;
+            multiplier = 0.8f;
         }
 
         if (from is Elf) {
@@ -135,7 +135,7 @@ public class Player : Controllable {
         }
 
         if (from is BigElf) {
-            multiplier = 1f;
+            multiplier = 0.5f;
         }
 
         Vector3 dir = transform.position - from.transform.position;
