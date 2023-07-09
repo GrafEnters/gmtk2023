@@ -34,6 +34,10 @@ public class NextLevelTrigger : MonoBehaviour {
             return;
         }
 
+        if (!other.attachedRigidbody) {
+            return;
+        }
+
         if (other.attachedRigidbody.GetComponent<Controllable>()) {
             if (Controllable.CurrentUnderControl == other.attachedRigidbody.GetComponent<Controllable>() &&
                 !(Controllable.CurrentUnderControl is Player)) {
