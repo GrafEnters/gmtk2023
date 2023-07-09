@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using ZhukovskyGamesPlugin;
 
 namespace DefaultNamespace {
     public class Altar : MonoBehaviour {
@@ -72,7 +74,8 @@ namespace DefaultNamespace {
         }
 
         private void OnActivated() {
-            
+            SceneManager.LoadScene("FinalScene");
+            EntryPoint.Audio.PlaySound(Sounds.portal_open);
         }
 
         public void InterruptActivating() {

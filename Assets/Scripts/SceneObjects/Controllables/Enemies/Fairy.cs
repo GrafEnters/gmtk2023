@@ -1,6 +1,7 @@
 using System.Collections;
 using DefaultNamespace;
 using UnityEngine;
+using ZhukovskyGamesPlugin;
 
 public class Fairy : Enemy {
     protected bool _isTeleporting;
@@ -61,7 +62,7 @@ public class Fairy : Enemy {
         if (!_spine) {
             yield break;
         }
-
+        EntryPoint.Audio.PlaySound(Sounds.pixie_teleport);
         yield return StartCoroutine(_spine.ShowSpineAnimation("attack"));
         _spine.SetAnimation("idle");
     }

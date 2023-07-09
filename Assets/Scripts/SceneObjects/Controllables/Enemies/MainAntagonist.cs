@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using DefaultNamespace;
 using UnityEngine;
+using ZhukovskyGamesPlugin;
 
 public class MainAntagonist : Enemy {
     public Animation Animation;
@@ -14,6 +16,7 @@ public class MainAntagonist : Enemy {
     public float defenderRadius = 2f;
     public float defenderSpeed = 0.01f;
     private float angle;
+    
 
     public void SetSpeakMode(bool isSpeaking) {
         _isSpeaking = isSpeaking;
@@ -123,9 +126,9 @@ public class MainAntagonist : Enemy {
         if (distance <= 2f) {
             StartCoroutine(Test());
         }
-        
+        EntryPoint.Audio.PlaySound(Sounds.Sword_whoosh);
         yield return _spine.ShowSpineAnimation("attack");
-       
+     
         _navMeshAgent.destination = transform.position;
         _navMeshAgent.isStopped = true;
 

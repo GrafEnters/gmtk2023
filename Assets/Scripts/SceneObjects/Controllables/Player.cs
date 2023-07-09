@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using DefaultNamespace;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using ZhukovskyGamesPlugin;
 
 public class Player : Controllable {
     public static Player Instance;
@@ -30,6 +32,24 @@ public class Player : Controllable {
             Instance = this;
             StartControl();
         }
+
+        SetMusic();
+
+    }
+
+    private void SetMusic() {
+        if (!EntryPoint.Audio) {
+            return;
+        }
+        if (SceneManager.GetActiveScene().name == "Gnome4" ||
+            SceneManager.GetActiveScene().name == "Elf4" ||
+            SceneManager.GetActiveScene().name == "Fairy4") {
+            EntryPoint.Audio.PlayMusic(Music.boss_fight);
+        } else if ((SceneManager.GetActiveScene().name == "Menu")) {
+            EntryPoint.Audio.PlayMusic(Music.central_location);
+        } else {
+            EntryPoint.Audio.PlayMusic(Music.level_soundtrack);
+        }
     }
 
     protected override void CheckInputs() {
@@ -54,7 +74,9 @@ public class Player : Controllable {
     }
 
     private IEnumerator AbilityAnimation() {
+        EntryPoint.Audio.PlaySound(Sounds.DemonShaut);
         yield return StartCoroutine(_spine.ShowSpineAnimation("attack"));
+       
         _spine.SetAnimation("idle");
         AbilityEffect();
         _isAttacking = false;
@@ -100,6 +122,7 @@ public class Player : Controllable {
 
             carryableObject.SetState(CarryableObject.State.IsCarrying);
             _carryableObjects.Add(carryableObject);
+            EntryPoint.Audio.PlaySound(Sounds.item_pick);
         }
     }
 

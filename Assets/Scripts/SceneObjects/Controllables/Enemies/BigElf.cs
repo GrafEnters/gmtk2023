@@ -1,6 +1,9 @@
+using DefaultNamespace;
 using UnityEngine;
+using ZhukovskyGamesPlugin;
 
 public class BigElf : Elf {
+    
     protected override void ShootAbility(Vector3 target, bool isPlayer) {
         Arrow arrow = Instantiate(_arrowPrefab, transform.position + Vector3.up * 0.5f, Quaternion.identity);
 

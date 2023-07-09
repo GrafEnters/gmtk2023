@@ -1,5 +1,7 @@
 using System.Collections;
+using DefaultNamespace;
 using UnityEngine;
+using ZhukovskyGamesPlugin;
 
 public class Gnome : Enemy {
     [SerializeField]
@@ -89,8 +91,9 @@ public class Gnome : Enemy {
         if (!_spine) {
             yield break;
         }
-
+        EntryPoint.Audio.PlaySound(Sounds.Punch_02);
         yield return StartCoroutine(_spine.ShowSpineAnimation("attack"));
+       
         _spine.SetAnimation("idle");
         if (IsCloseToTarget) {
             target.OnHit(this);

@@ -1,7 +1,9 @@
 using System.Linq;
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
+using ZhukovskyGamesPlugin;
 
 public class NextLevelTrigger : MonoBehaviour {
     [SerializeField]
@@ -50,6 +52,7 @@ public class NextLevelTrigger : MonoBehaviour {
             DontDestroyOnLoad(Player.Instance.gameObject);
             SceneManager.sceneLoaded += OnSceneLoaded;
             SceneManager.LoadScene(sceneNameToLoad);
+            EntryPoint.Audio.PlaySound(Sounds.enter_door);
         }
     }
 
@@ -68,6 +71,7 @@ public class NextLevelTrigger : MonoBehaviour {
 
     public void OpenDoor() {
         _animation.Play("Open");
+    
         _obstacle.enabled = false;
         _collider.isTrigger = true;
     }

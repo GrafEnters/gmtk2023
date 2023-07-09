@@ -3,13 +3,18 @@
 namespace ZhukovskyGamesPlugin {
     [Serializable]
     public enum Sounds {
-        Quack = 0,
-        S1 = 1,
-        S2 = 2,
-        S3 = 3,
-        S4 = 4,
-        S5 = 5,
-        S6 = 6,
-        S7 = 7
+        Arrow_shot = 0,
+
+        DemonShaut = 1,
+        enter_door = 2,
+        item_drop = 3,
+        item_pick = 4,
+
+        pixie_teleport = 5,
+        portal_open = 6,
+        Punch_02 = 7,
+        step2 = 8,
+        Stone_breake = 9,
+        Sword_whoosh = 10,
     }
 }
