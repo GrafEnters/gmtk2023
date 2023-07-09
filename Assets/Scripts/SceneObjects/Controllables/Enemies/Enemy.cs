@@ -1,7 +1,4 @@
 using System.Collections;
-using System.Linq;
-using Spine;
-using DefaultNamespace;
 using UnityEngine;
 
 public abstract class Enemy : Controllable {

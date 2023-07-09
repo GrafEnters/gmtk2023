@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace DefaultNamespace {
     public class FTUEManager : MonoBehaviour {
@@ -8,6 +9,9 @@ namespace DefaultNamespace {
         public Player Player;
         public MainAntagonist Hero;
         public UIManager UIManager;
+
+        public NextLevelTrigger _leftDoor;
+        public NextLevelTrigger _rightDoor;
 
         private bool _movingTutorActivated;
         private List<KeyCode> _moveControlsUsed = new List<KeyCode>();
@@ -21,19 +25,29 @@ namespace DefaultNamespace {
         private static bool isStarted;
         
         private void Awake() {
-            bool IsFTUEPassed = false;
-            if (SaveDataManager.Data != null) {
-                IsFTUEPassed = SaveDataManager.Data.IsFTUEPassed;
+            if (SaveDataManager.Data.IsSTUEPassed) {
+                _leftDoor.SetOpened();
+                _rightDoor.SetOpened();
             }
-            if (IsFTUEPassed && !isStarted) {
+            
+            if (SaveDataManager.Data.IsFTUEPassed && !isStarted) {
                 Hero.gameObject.SetActive(true);
             } else {
                 Hero.gameObject.SetActive(false);
+                StartCoroutine(ShowScenario());
             }
+            
+            SceneManager.activeSceneChanged -= OnActiveSceneChanged;
+            SceneManager.activeSceneChanged += OnActiveSceneChanged;
 
             isStarted = true;
+        }
 
-            StartCoroutine(ShowScenario());
+        private void OnActiveSceneChanged(Scene prev, Scene next) {
+            if (next.name.Contains("Gnome")) {
+                SaveDataManager.Data.IsSTUEPassed = true;
+                EntryPoint.SaveDataManager.Save();
+            }
         }
 
         private IEnumerator ShowScenario() {
@@ -43,6 +57,7 @@ namespace DefaultNamespace {
             
             if (SaveDataManager.Data != null) {
                 SaveDataManager.Data.IsFTUEPassed = true;
+                EntryPoint.SaveDataManager.Save();
             }
         }
 
