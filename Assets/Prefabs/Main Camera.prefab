@@ -99,4 +99,4 @@ MonoBehaviour:
   target: {fileID: 0}
   isCustomOffset: 1
   offset: {x: 0, y: 5, z: -5}
-  smoothSpeed: 0.8
+  smoothSpeed: 0.018
