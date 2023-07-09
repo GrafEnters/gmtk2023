@@ -66,22 +66,21 @@ namespace DefaultNamespace {
             if (next.name.Contains("Gnome")) {
                 Gnome[] objects = GetComponentsInRootObjects<Gnome>(next);
                 if (objects.Length > 0) {
-
+                    SaveDataManager.Data.IsTutor2Passed = true;
+                    EntryPoint.SaveDataManager.Save();
                     if (!SaveDataManager.Data.IsTutor2Passed) {
                         foreach (Gnome gnome in objects) {
                             gnome.OnStun += delegate {
-                                SaveDataManager.Data.IsTutor2Passed = true;
-                                EntryPoint.SaveDataManager.Save();
                                 UIManager.HideBottomText();
                             };
                         }
                     
                         UIManager.ShowBottomText("USE LMB TO PUSH BACK ENEMIES", Color.white);
                     } else if (!SaveDataManager.Data.IsTutor3Passed) {
+                        SaveDataManager.Data.IsTutor3Passed = true;
+                        EntryPoint.SaveDataManager.Save();
                         foreach (Gnome gnome in objects) {
                             gnome.OnUnderControl += delegate {
-                                SaveDataManager.Data.IsTutor3Passed = true;
-                                EntryPoint.SaveDataManager.Save();
                                 UIManager.HideBottomText();
                             };
                         }
