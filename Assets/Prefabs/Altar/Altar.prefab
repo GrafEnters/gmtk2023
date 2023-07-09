@@ -70,7 +70,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 6d126a57b9b3e4901b7eecc1917ef0ba, type: 3}
   m_Color: {r: 1, g: 0.6650944, b: 0.6650944, a: 1}
   m_FlipX: 0
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!1 &9056989213940335210
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,6 +173,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3604550916587906312}
     m_Modifications:
+    - target: {fileID: 152065283497949239, guid: 9f3a69a80e83c45dd88f009a682e7124, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5164
+      objectReference: {fileID: 0}
+    - target: {fileID: 152065283497949239, guid: 9f3a69a80e83c45dd88f009a682e7124, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.002
+      objectReference: {fileID: 0}
     - target: {fileID: 1013169064951188668, guid: 9f3a69a80e83c45dd88f009a682e7124, type: 3}
       propertyPath: m_Name
       value: AltarSpot (1)
@@ -191,7 +199,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2024804337149259734, guid: 9f3a69a80e83c45dd88f009a682e7124, type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024804337149259734, guid: 9f3a69a80e83c45dd88f009a682e7124, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5056203249637644844, guid: 9f3a69a80e83c45dd88f009a682e7124, type: 3}
       propertyPath: m_RootOrder
@@ -266,6 +278,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3604550916587906312}
     m_Modifications:
+    - target: {fileID: 152065283497949239, guid: 9f3a69a80e83c45dd88f009a682e7124, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5164
+      objectReference: {fileID: 0}
+    - target: {fileID: 152065283497949239, guid: 9f3a69a80e83c45dd88f009a682e7124, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.002
+      objectReference: {fileID: 0}
     - target: {fileID: 1013169064951188668, guid: 9f3a69a80e83c45dd88f009a682e7124, type: 3}
       propertyPath: m_Name
       value: AltarSpot (3)
@@ -284,7 +304,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2024804337149259734, guid: 9f3a69a80e83c45dd88f009a682e7124, type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024804337149259734, guid: 9f3a69a80e83c45dd88f009a682e7124, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5056203249637644844, guid: 9f3a69a80e83c45dd88f009a682e7124, type: 3}
       propertyPath: m_RootOrder
@@ -359,6 +383,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3604550916587906312}
     m_Modifications:
+    - target: {fileID: 152065283497949239, guid: 9f3a69a80e83c45dd88f009a682e7124, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5164
+      objectReference: {fileID: 0}
+    - target: {fileID: 152065283497949239, guid: 9f3a69a80e83c45dd88f009a682e7124, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.002
+      objectReference: {fileID: 0}
     - target: {fileID: 1013169064951188668, guid: 9f3a69a80e83c45dd88f009a682e7124, type: 3}
       propertyPath: m_Name
       value: AltarSpot (2)
@@ -377,7 +409,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2024804337149259734, guid: 9f3a69a80e83c45dd88f009a682e7124, type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024804337149259734, guid: 9f3a69a80e83c45dd88f009a682e7124, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5056203249637644844, guid: 9f3a69a80e83c45dd88f009a682e7124, type: 3}
       propertyPath: m_RootOrder

@@ -18,4 +18,12 @@ public class BigElf : Elf {
             arrow.SetFlyDirection(Quaternion.Euler(0, -15, 0) * dir, _arrowSpeed, isPlayer, this);
         }
     }
+
+    public override void OnHit(Controllable @from) {
+        base.OnHit(@from);
+        StopAllCoroutines();
+        _isReloading = false;
+        IsLockedMovement = false;
+        FreeControllable();
+    }
 }
