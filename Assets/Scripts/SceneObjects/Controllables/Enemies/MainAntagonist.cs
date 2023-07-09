@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Linq;
+using DefaultNamespace;
 using UnityEngine;
 
 public class MainAntagonist : Enemy {
+    public Animation Animation;
+    public SpeechPopUp PopUp;
 
+    private bool _isSpeaking;
     private bool _isWaitingArriving;
     private bool _isDefending = true;
     
@@ -11,8 +15,12 @@ public class MainAntagonist : Enemy {
     public float defenderSpeed = 0.01f;
     private float angle;
 
+    public void SetSpeakMode(bool isSpeaking) {
+        _isSpeaking = isSpeaking;
+    }
+    
     protected override void TrySetDestination() {
-        if (_isAttacking) {
+        if (_isAttacking || _isSpeaking) {
             return;
         }
 

@@ -10,6 +10,8 @@ public class Player : Controllable {
     public bool IsPressE;
     public bool IsPressSpace;
 
+    public Animation Animation;
+    
     [Header("Blast Ability")]
     [SerializeField]
     private float length = 2.5f;
@@ -38,15 +40,6 @@ public class Player : Controllable {
 
         if (Input.GetKeyUp(KeyCode.E)) {
             IsPressE = false;
-        }
-
-        //TODO Test controll
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            IsPressSpace = true;
-        }
-
-        if (Input.GetKeyUp(KeyCode.Space)) {
-            IsPressSpace = false;
         }
     }
 

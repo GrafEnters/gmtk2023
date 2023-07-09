@@ -245,6 +245,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1753502792148394108, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
   m_PrefabInstance: {fileID: 1790555421345457892}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &3467025863958446516 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2937487203345360720, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
+  m_PrefabInstance: {fileID: 1790555421345457892}
+  m_PrefabAsset: {fileID: 0}
 --- !u!54 &2313701086008513273 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 4090040637381620765, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
@@ -294,6 +299,7 @@ MonoBehaviour:
   _obvodka: {fileID: 2184429483707998304}
   _rb: {fileID: 2313701086008513273}
   _spine: {fileID: 4353874787416356578}
+  _turnContainer: {fileID: 3467025863958446516}
   moveSpeed: 3
   ReachTargetDistance: 5
   BlindZoneOut: 10
