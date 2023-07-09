@@ -69,7 +69,7 @@ public class Player : Controllable {
                 LayerMask.GetMask("Enemy"));
             foreach (var enemyHit in enemies) {
                 Vector3 hitDir = (enemyHit.point - transform.position).normalized;
-                enemyHit.rigidbody.GetComponent<Enemy>().Knockback(hitDir * knockbackPower);
+                enemyHit.rigidbody.GetComponent<Enemy>().Knockback(hitDir * knockbackPower * 3);
                 enemyHit.rigidbody.GetComponent<Enemy>().Stun();
             }
         }
