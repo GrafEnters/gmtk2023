@@ -20,9 +20,6 @@ public class MainAntagonist : Enemy {
     public float defenderRadius = 2f;
     public float defenderSpeed = 0.01f;
     private float angle;
-    
-
-    protected override bool IsSupportReincarnation => false;
 
     protected override void Start() {
         _name.text = SaveDataManager.Data.HeroName;
