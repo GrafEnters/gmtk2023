@@ -8,5 +8,9 @@ namespace DefaultNamespace {
             gameObject.SetActive(true);
             Text.text = text;
         }
+
+        public void Hide() {
+            gameObject.SetActive(false);
+        }
     }
 }

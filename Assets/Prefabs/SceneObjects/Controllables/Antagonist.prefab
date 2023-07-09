@@ -288,7 +288,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 565036442935432546, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
       propertyPath: m_StoppingDistance
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 925502415311869532, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
       propertyPath: m_IsActive
@@ -470,8 +470,9 @@ MonoBehaviour:
   distanceToBreak: 2
   Animation: {fileID: 8268137125212563571}
   PopUp: {fileID: 5504736413107938050}
+  defaultSpeed: 3.5
   defenderRadius: 1.5
-  defenderSpeed: 0.02
+  defenderSpeed: 3.5
 --- !u!114 &4719873600857638108
 MonoBehaviour:
   m_ObjectHideFlags: 0

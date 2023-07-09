@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Linq;
 using DefaultNamespace;
 using UnityEngine;
 
@@ -7,16 +6,22 @@ public class MainAntagonist : Enemy {
     public Animation Animation;
     public SpeechPopUp PopUp;
 
+   
     private bool _isSpeaking;
     private bool _isWaitingArriving;
     private bool _isDefending = true;
     
+    public float defaultSpeed = 3.5f;
     public float defenderRadius = 2f;
     public float defenderSpeed = 0.01f;
     private float angle;
 
     public void SetSpeakMode(bool isSpeaking) {
         _isSpeaking = isSpeaking;
+    }
+
+    public void SetDefendingMode(bool isDefending) {
+        _isDefending = isDefending;
     }
     
     protected override void TrySetDestination() {
@@ -91,18 +96,20 @@ public class MainAntagonist : Enemy {
     private IEnumerator PrepareToAttack() {
         _isAttacking = true;
 
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(1.5f);
 
         _navMeshAgent.isStopped = false;
         _isWaitingArriving = true;
         _navMeshAgent.avoidancePriority = 0;
-        Vector3 vector = CurrentUnderControl.transform.position - transform.position;
-        RaycastHit[] hits = Physics.RaycastAll(transform.position, vector.normalized, 20f);
-        RaycastHit hit = hits.FirstOrDefault(hit => hit.collider.tag == "Obstacle");
-        if (hit.collider != null) {
-            _navMeshAgent.speed *= 5;
-            _navMeshAgent.SetDestination(hit.point);
-        }
+        _navMeshAgent.speed = defaultSpeed * 5;
+        _navMeshAgent.SetDestination(CurrentUnderControl.transform.position);
+        // Vector3 vector = CurrentUnderControl.transform.position - transform.position;
+        // RaycastHit[] hits = Physics.RaycastAll(transform.position, vector.normalized, 20f);
+        // RaycastHit hit = hits.FirstOrDefault(hit => hit.collider.tag == "Obstacle");
+        // if (hit.collider != null) {
+        //     _navMeshAgent.speed = defaultSpeed;
+        //     _navMeshAgent.SetDestination(hit.point);
+        // }
     }
     
     private void OnTriggerEnter(Collider other) {
@@ -110,7 +117,7 @@ public class MainAntagonist : Enemy {
             if (other.tag == "Player") {
                 _navMeshAgent.destination = transform.position;
                 _navMeshAgent.isStopped = true;
-                _navMeshAgent.speed /= 5;
+                _navMeshAgent.speed = defaultSpeed;
                 
                 CurrentUnderControl.OnHit(this);
 
@@ -132,7 +139,7 @@ public class MainAntagonist : Enemy {
                 _isAttacking = false;
                 _isWaitingArriving = false;
 
-                _navMeshAgent.speed /= 5;
+                _navMeshAgent.speed = defaultSpeed;
                 _navMeshAgent.avoidancePriority = 50;
                 Stun();
             }

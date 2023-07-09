@@ -68,6 +68,7 @@ namespace DefaultNamespace {
         private IEnumerator ShowScene3() {
             Hero.gameObject.SetActive(true);
             Hero.SetSpeakMode(true);
+            Hero.SetDefendingMode(false);
             Hero.Animation.Play("Appear");
             do {
                 yield return null;
@@ -78,9 +79,9 @@ namespace DefaultNamespace {
             Hero.PopUp.Show("Paw pau!");
             yield return new WaitForSeconds(1f);
             Hero.PopUp.Show("RUUUN!!");
-            yield return new WaitForSeconds(0.3f);
-
             Hero.SetSpeakMode(false);
+            yield return new WaitForSeconds(3f);
+            Hero.PopUp.Hide();
         }
 
         private void Update() {
