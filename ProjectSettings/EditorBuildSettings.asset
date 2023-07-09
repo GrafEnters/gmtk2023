@@ -9,21 +9,54 @@ EditorBuildSettings:
     path: Assets/Scenes/Loading.unity
     guid: 46dfa78ee9b95d7429fd1acb00a4bf43
   - enabled: 1
-    path: Assets/Scenes/Menu.unity
+    path: Assets/Scenes/MenuScene/Menu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Gnome1.unity
+    path: Assets/Scenes/Gnomes/Gnome1.unity
     guid: 955e55da8226cab41946c18ac2079174
   - enabled: 1
-    path: Assets/Scenes/Gnome2.unity
+    path: Assets/Scenes/Gnomes/Gnome2.unity
     guid: 645f0f127cdf24146b82e5ee78ca5337
   - enabled: 1
-    path: Assets/Scenes/Gnome3.unity
+    path: Assets/Scenes/Gnomes/Gnome3.unity
     guid: 5b856174da13d0b4ba6a237b78162592
   - enabled: 1
-    path: Assets/Scenes/Gnome4.unity
+    path: Assets/Scenes/Gnomes/Gnome4.unity
     guid: 49023793144463d42ac0c26a976f2886
   - enabled: 1
-    path: Assets/Scenes/Gnome5.unity
+    path: Assets/Scenes/Gnomes/Gnome5.unity
     guid: f1e5f122e2d7fe144bd5fe620644bdec
+  - enabled: 1
+    path: Assets/Scenes/Elfs/Elf1.unity
+    guid: 7bd759e000dfb8a4ea389d9ad741f89b
+  - enabled: 1
+    path: Assets/Scenes/Elfs/Elf2.unity
+    guid: 6b6dc7b8af067144e9f1529ce162ac13
+  - enabled: 1
+    path: Assets/Scenes/Elfs/Elf3.unity
+    guid: cb1ceecd497bb264199a33edea4d8c49
+  - enabled: 1
+    path: Assets/Scenes/Elfs/Elf4.unity
+    guid: 90c302569fbe0524b9d5fd38389be475
+  - enabled: 1
+    path: Assets/Scenes/Elfs/Elf5.unity
+    guid: 3f9d66e668d20044882dc1300c0cf794
+  - enabled: 1
+    path: Assets/Scenes/Fairies/Fairy1.unity
+    guid: b6e033f5f99b60044869ac032e4f3a10
+  - enabled: 1
+    path: Assets/Scenes/Fairies/Fairy2.unity
+    guid: 5e486933101d4df489cf641cbfd91808
+  - enabled: 1
+    path: Assets/Scenes/Fairies/Fairy3.unity
+    guid: 600711bbb4b6a7849ac6261ccf03ae7a
+  - enabled: 1
+    path: Assets/Scenes/Fairies/Fairy4.unity
+    guid: 8b7e7f2cc305a2641b467b1fcde34726
+  - enabled: 1
+    path: Assets/Scenes/Fairies/Fairy5.unity
+    guid: 43eebbd9cbe97604b9684299cc6126fb
+  - enabled: 1
+    path: Assets/Scenes/FinalScene.unity
+    guid: e75a916359c70ec4b936abd1e3fc228d
   m_configObjects: {}

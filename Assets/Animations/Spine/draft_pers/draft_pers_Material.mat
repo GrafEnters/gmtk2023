@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: draft_pers_Material
   m_Shader: {fileID: 4800000, guid: 1e8a610c9e01c3648bac42585e5fc676, type: 3}
-  m_ShaderKeywords: _USE8NEIGHBOURHOOD_ON
+  m_ShaderKeywords: _STRAIGHT_ALPHA_INPUT _USE8NEIGHBOURHOOD_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -28,12 +28,12 @@ Material:
     - _OutlineMipLevel: 0
     - _OutlineOpaqueAlpha: 1
     - _OutlineReferenceTexWidth: 1024
-    - _OutlineSmoothness: 1
-    - _OutlineWidth: 3
+    - _OutlineSmoothness: 0.535
+    - _OutlineWidth: 8
     - _StencilComp: 8
     - _StencilRef: 1
-    - _StraightAlphaInput: 0
-    - _ThresholdEnd: 0.25
+    - _StraightAlphaInput: 1
+    - _ThresholdEnd: 0.698
     - _Use8Neighbourhood: 1
     m_Colors:
     - _OutlineColor: {r: 1, g: 1, b: 0, a: 1}
