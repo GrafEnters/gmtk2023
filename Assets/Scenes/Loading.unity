@@ -1098,6 +1098,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Comics
       objectReference: {fileID: 0}
+    - target: {fileID: 5879611903739471519, guid: d6701314d4fd66f439341da890e04543, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6701314d4fd66f439341da890e04543, type: 3}
 --- !u!1001 &6440479349876739962
@@ -1243,7 +1247,7 @@ PrefabInstance:
     - target: {fileID: 7915996944354005370, guid: 2b5c46ac5c0099047a8932cd578f34f0, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 6920070404752364990, guid: 803080aee7ed88d448c2f5af35808c57, type: 3}
+      objectReference: {fileID: 6920070404752364990, guid: d2af073932c142e08dafd7dd0250d76e, type: 3}
     - target: {fileID: 7915996944928030103, guid: 2b5c46ac5c0099047a8932cd578f34f0, type: 3}
       propertyPath: m_fontSize
       value: 52
@@ -1443,6 +1447,6 @@ PrefabInstance:
     - target: {fileID: 7915996945543978290, guid: 2b5c46ac5c0099047a8932cd578f34f0, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -2842465668733322661, guid: 803080aee7ed88d448c2f5af35808c57, type: 3}
+      objectReference: {fileID: -2842465668733322661, guid: d2af073932c142e08dafd7dd0250d76e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b5c46ac5c0099047a8932cd578f34f0, type: 3}
