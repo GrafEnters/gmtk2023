@@ -134,7 +134,7 @@ public abstract class Controllable : MonoBehaviour, IControllable {
         }
     }
 
-    protected void FreeControllable() {
+    public void FreeControllable() {
         EndControl();
         Player.Instance.StartControl();
         Player.Instance.transform.position = transform.position;

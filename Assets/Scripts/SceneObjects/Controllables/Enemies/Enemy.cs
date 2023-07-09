@@ -64,6 +64,9 @@ public abstract class Enemy : Controllable {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out RaycastHit hit, 150, LayerMask.GetMask("Default"))) {
+            if (!hit.rigidbody) {
+                return null;
+            }
             if (hit.rigidbody.CompareTag(tag) &&
                 (hit.transform.position - transform.position).magnitude < distanceToBreak) {
                 return hit.rigidbody.gameObject;
