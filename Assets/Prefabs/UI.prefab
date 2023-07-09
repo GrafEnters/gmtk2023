@@ -308,6 +308,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b749ed5f677b4d79909364dcc93a0fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _demonSkill: {fileID: 21300000, guid: 076b8179958a42b49e0cb4fffa0b8637, type: 3}
+  _gnomeSkill: {fileID: 21300000, guid: d5b926726e73425883b1405eccbfbddd, type: 3}
+  _elfSkill: {fileID: 21300000, guid: 92bb0c2ee15241129d6c4c45e8ebd633, type: 3}
+  _fairySkill: {fileID: 21300000, guid: 1bf0c427d315446abd9de72307da7c6f, type: 3}
+  _inSkill: {fileID: 21300000, guid: 13f1f3367b6f4f5a8e976c4db67655ae, type: 3}
+  _outSkill: {fileID: 21300000, guid: 8ede19a691654fa1bbd69b93f7e045cc, type: 3}
+  _lkm: {fileID: 4504269036068616248}
+  _pkm: {fileID: 1008233488113011064}
   _bottomTextField: {fileID: 2741520712996564865}
   _wasd: {fileID: 2208673262965378864}
 --- !u!1 &2741520712996564867
