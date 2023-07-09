@@ -135,15 +135,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2283475283520566418, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2283475283520566418, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2283475283520566418, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2937487203345360720, guid: 9d0982d5ad86e464faa950ded9e898d6, type: 3}
       propertyPath: m_RootOrder
@@ -334,7 +334,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f7f6b665937db6642a447e5a3f89482d, type: 2}
+  - {fileID: 2100000, guid: aa47b46190d321f419c512b40a9b2f7a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -368,7 +368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 09bdbe351d3ffc4409dd24c8aec6ebba, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 5240b8b115175874395731eca69d4c98, type: 2}
   initialSkinName: 
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 1
