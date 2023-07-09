@@ -3,8 +3,10 @@ using DefaultNamespace;
 using UnityEngine;
 
 public class Fairy : Enemy {
-    private bool _isAttacking;
     protected bool _isTeleporting;
+
+    [SerializeField]
+    private float _maxDistanceToTp = 1;
 
     protected override void MainAbility() {
         if (_isTeleporting) {
@@ -32,7 +34,15 @@ public class Fairy : Enemy {
             yield break;
         }
 
-        yield return ShowTeleportAnimation(go);
+        yield return ShowTeleportAnimation();
+        if ((transform.position - go.transform.position).magnitude >= _maxDistanceToTp) {
+            _isTeleporting = false;
+            _isAttacking = false;
+            IsLockedMovement = false;
+            yield break;
+        }
+
+        Teleport(go);
         if (isPlayer) {
             if (this is BigFairy) {
                 go.GetComponent<Crystal>().OnTeleportedByBigPlayer();
@@ -47,20 +57,19 @@ public class Fairy : Enemy {
         IsLockedMovement = false;
     }
 
-    protected IEnumerator ShowTeleportAnimation(GameObject objToTeleport) {
+    protected IEnumerator ShowTeleportAnimation() {
         if (!_spine) {
             yield break;
         }
 
         yield return StartCoroutine(_spine.ShowSpineAnimation("attack"));
-        Teleport(objToTeleport);
         _spine.SetAnimation("idle");
     }
 
     private void Teleport(GameObject obj) {
         Transform target = TeleportHelper.Instance.GetRandomTarget;
         obj.transform.position = target.position;
-        if(obj.CompareTag("Crystal")) {
+        if (obj.CompareTag("Crystal")) {
             obj.transform.SetParent(target);
         }
     }

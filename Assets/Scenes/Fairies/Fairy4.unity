@@ -601,6 +601,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fairy Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7769722655715365142, guid: ac7684c3eccd0b34c8fb376f2a0c968d, type: 3}
+      propertyPath: _maxDistanceToTp
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7787347897337983871, guid: ac7684c3eccd0b34c8fb376f2a0c968d, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1021,6 +1025,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1362215932, guid: b10822eda4f95304db271886fd06c231, type: 3}
+      propertyPath: _maxDistanceToTp
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1362215934, guid: b10822eda4f95304db271886fd06c231, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -1830,6 +1838,10 @@ PrefabInstance:
     - target: {fileID: 6666325619077936211, guid: ac7684c3eccd0b34c8fb376f2a0c968d, type: 3}
       propertyPath: m_Name
       value: Fairy Variant (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7769722655715365142, guid: ac7684c3eccd0b34c8fb376f2a0c968d, type: 3}
+      propertyPath: _maxDistanceToTp
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7787347897337983871, guid: ac7684c3eccd0b34c8fb376f2a0c968d, type: 3}
       propertyPath: m_RootOrder
