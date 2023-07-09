@@ -13,6 +13,8 @@ namespace DefaultNamespace {
 
         [SerializeField]
         private TextMeshProUGUI _bottomTextField;
+        [SerializeField]
+        private GameObject _wasd;
 
         public void ShowBottomText(string text, Color color) {
             _bottomTextField.gameObject.SetActive(true);
@@ -25,5 +27,10 @@ namespace DefaultNamespace {
             _bottomTextField.color = Color.white;
             _bottomTextField.text = "";
         }
+
+        public void SetWASDVisibility(bool visible) {
+            _wasd.SetActive(visible);
+        }
+        
     }
 }

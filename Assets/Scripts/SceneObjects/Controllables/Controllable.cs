@@ -1,6 +1,4 @@
-using System;
 using DefaultNamespace;
-using Spine.Unity;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -18,6 +16,11 @@ public abstract class Controllable : MonoBehaviour, IControllable {
 
     [SerializeField]
     protected SpineHandler _spine;
+
+    [SerializeField]
+    protected Transform _turnContainer;
+    
+    public SpineHandler Spine => _spine;
 
     [SerializeField]
     protected float moveSpeed;
@@ -92,13 +95,13 @@ public abstract class Controllable : MonoBehaviour, IControllable {
         if (dir.x > 0) {
             Vector3 localScale = _spine.transform.localScale;
             localScale.x = -Mathf.Abs(localScale.x);
-            _spine.transform.localScale = localScale;
+            _turnContainer.localScale = localScale;
         }
 
         if (dir.x < 0) {
             Vector3 localScale = _spine.transform.localScale;
             localScale.x = Mathf.Abs(localScale.x);
-            _spine.transform.localScale = localScale;
+            _turnContainer.localScale = localScale;
         }
     }
 
