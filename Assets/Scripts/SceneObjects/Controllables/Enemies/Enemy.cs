@@ -85,7 +85,7 @@ public abstract class Enemy : Controllable {
     protected virtual IEnumerator WaitForStunEnd() {
         _navMeshAgent.isStopped = true;
         _rb.detectCollisions = false;
-        _rb.velocity = Vector3.zero;
+        _rb.linearVelocity = Vector3.zero;
         _isStunned = true;
         
         yield return StartCoroutine(_spine.ShowSpineAnimation("stunned"));

@@ -81,10 +81,11 @@ public class NextLevelTrigger : MonoBehaviour {
     public void SetOpened() {
         try {
             _animation.Play("Opened");
-        }
-        catch { }
+       
       
         _obstacle.enabled = false;
         _collider.isTrigger = true;
+        }
+        catch { }
     }
 }
