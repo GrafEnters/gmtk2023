@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
+using ZhukovskyGamesPlugin;
 
 public class Elf : Enemy {
     [SerializeField]
@@ -39,7 +41,7 @@ public class Elf : Enemy {
             IsLockedMovement = false;
             yield break;
         }
-
+        EntryPoint.Audio.PlaySound(Sounds.Arrow_shot);
         yield return StartCoroutine(_spine.ShowSpineAnimation("attack"));
         ShootAbility(target, isPlayer);
         _spine.SetAnimation("idle");

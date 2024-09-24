@@ -292,11 +292,12 @@ MonoBehaviour:
   _spine: {fileID: 4880990791812742914}
   _turnContainer: {fileID: 6509107379592054225}
   moveSpeed: 3
+  IsLockedMovement: 0
   ReachTargetDistance: 1
   BlindZoneOut: 4
   distanceToBreak: 2
   _arrowPrefab: {fileID: 6694099385219518446, guid: 0e68510465fbc4e408f465ff5c039546, type: 3}
-  _arrowSpeed: 0.5
+  _arrowSpeed: 1.5
   _reloadTime: 2.5
 --- !u!114 &4880990791812742914
 MonoBehaviour:

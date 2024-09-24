@@ -33,7 +33,7 @@ public abstract class Controllable : MonoBehaviour, IControllable {
 
     protected virtual bool IsSupportReincarnation => true;
 
-    private void Start() {
+    protected virtual void Start() {
         if (!IsLockedMovement) {
             _spine.SetAnimation("idle");
         }
@@ -134,7 +134,7 @@ public abstract class Controllable : MonoBehaviour, IControllable {
         }
     }
 
-    protected void FreeControllable() {
+    public void FreeControllable() {
         EndControl();
         Player.Instance.StartControl();
         Player.Instance.transform.position = transform.position;

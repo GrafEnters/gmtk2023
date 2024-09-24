@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using DefaultNamespace;
+using ZhukovskyGamesPlugin;
 
-public class BigFairy : Fairy
-{
-
+public class BigFairy : Fairy {
 }

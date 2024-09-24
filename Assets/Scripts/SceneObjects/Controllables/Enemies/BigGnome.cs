@@ -1,8 +1,10 @@
 using System.Collections;
+using DefaultNamespace;
 using UnityEngine;
+using ZhukovskyGamesPlugin;
 
 public class BigGnome : Gnome {
-   
+
     public override void Stun() { }
 
     protected override void MainAbility() {

@@ -13,11 +13,24 @@ MonoBehaviour:
   m_Name: _AudioSo
   m_EditorClassIdentifier: 
   _musicClips:
-    Keys: 0000000001000000
+    Keys: 01000000020000000300000004000000
     Values:
-    - {fileID: 8300000, guid: 268149459fc53b54eb2614b8a6079441, type: 3}
-    - {fileID: 8300000, guid: 709974840dac3dd43ba44623a69f5d18, type: 3}
+    - {fileID: 8300000, guid: e03518344cd59414dad72d42d1478325, type: 3}
+    - {fileID: 8300000, guid: 7875693072369354b83f3c156aa51400, type: 3}
+    - {fileID: 8300000, guid: e5a93619c593e7c42ad251f46aedf313, type: 3}
+    - {fileID: 8300000, guid: 3737ab67694b1c141a380541466c65db, type: 3}
   _soundClips:
-    Keys: 00000000
+    Keys: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a000000
     Values:
+    - {fileID: 8300000, guid: 05fc5d9a752efde429d9542d632551c7, type: 3}
+    - {fileID: 8300000, guid: 6b1e36de9cad8bc4f81cb3327c9782be, type: 3}
+    - {fileID: 8300000, guid: 18c535de6625cc44c9c37b64fc1d4396, type: 3}
+    - {fileID: 8300000, guid: a60009b289468084c90e8ac9170bc38f, type: 3}
+    - {fileID: 8300000, guid: 5dd841fd3f939ca4090f186fe5291cc5, type: 3}
+    - {fileID: 8300000, guid: e47f009a52df13245aae988996903bae, type: 3}
+    - {fileID: 8300000, guid: e8ba22eb1fcf31148a67178e2aae7bb9, type: 3}
+    - {fileID: 8300000, guid: 793759fabb6f94440a5bb5264e32d911, type: 3}
     - {fileID: 8300000, guid: d8f1c843f5f88334da575888cd5a5313, type: 3}
+    - {fileID: 8300000, guid: ec6d9ff3756f129468373dd6cf68ac3c, type: 3}
+    - {fileID: 8300000, guid: 7f1354641bd883d439ecf4b36f308a94, type: 3}
+    - {fileID: 8300000, guid: 27b28e67ca96b6c438176f3454d8d9c3, type: 3}

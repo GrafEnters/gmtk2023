@@ -1,20 +1,25 @@
 using System.Linq;
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
+using ZhukovskyGamesPlugin;
 
 public class NextLevelTrigger : MonoBehaviour {
     [SerializeField]
     private string sceneNameToLoad;
+
     [SerializeField]
     private Animation _animation;
+
     [SerializeField]
     private Collider _collider;
+
     [SerializeField]
     private NavMeshObstacle _obstacle;
 
     public bool IsOpenedByDefault;
-    
+
     private bool _onTriggered;
 
     [SerializeField]
@@ -31,12 +36,23 @@ public class NextLevelTrigger : MonoBehaviour {
             return;
         }
 
-        if (other.CompareTag("Player")) {
+        if (!other.attachedRigidbody) {
+            return;
+        }
+
+        if (other.attachedRigidbody.GetComponent<Controllable>()) {
+            if (Controllable.CurrentUnderControl == other.attachedRigidbody.GetComponent<Controllable>() &&
+                !(Controllable.CurrentUnderControl is Player)) {
+                Controllable.CurrentUnderControl.FreeControllable();
+                return;
+            }
+
             _onTriggered = true;
             Player.Instance.gameObject.SetActive(false);
             DontDestroyOnLoad(Player.Instance.gameObject);
             SceneManager.sceneLoaded += OnSceneLoaded;
             SceneManager.LoadScene(sceneNameToLoad);
+            EntryPoint.Audio.PlaySound(Sounds.enter_door);
         }
     }
 
@@ -49,22 +65,27 @@ public class NextLevelTrigger : MonoBehaviour {
             Player.Instance.transform.position = availablePlayer.transform.position;
             Destroy(availablePlayer.gameObject);
         }
+
         Player.Instance.gameObject.SetActive(true);
     }
 
     public void OpenDoor() {
         _animation.Play("Open");
+    
         _obstacle.enabled = false;
         _collider.isTrigger = true;
     }
 
-    public void CloseDoor() {
-        
-    }
+    public void CloseDoor() { }
 
     public void SetOpened() {
-        _animation.Play("Opened");
+        try {
+            _animation.Play("Opened");
+       
+      
         _obstacle.enabled = false;
         _collider.isTrigger = true;
+        }
+        catch { }
     }
 }

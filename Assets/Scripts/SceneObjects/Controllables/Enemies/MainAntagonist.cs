@@ -1,11 +1,17 @@
+using System;
 using System.Collections;
 using DefaultNamespace;
+using TMPro;
 using UnityEngine;
+using ZhukovskyGamesPlugin;
 
 public class MainAntagonist : Enemy {
     public Animation Animation;
     public SpeechPopUp PopUp;
 
+    [SerializeField]
+    private TextMeshPro _name;
+    
     private bool _isSpeaking;
     private bool _isWaitingArriving;
     private bool _isDefending = true;
@@ -15,6 +21,15 @@ public class MainAntagonist : Enemy {
     public float defenderSpeed = 0.01f;
     private float angle;
 
+    protected override void Start() {
+        _name.text = SaveDataManager.Data.HeroName;
+        if (!_isSpeaking) {
+            base.Start();
+        }
+    }
+
+    protected override bool IsSupportReincarnation => false;
+    
     public void SetSpeakMode(bool isSpeaking) {
         _isSpeaking = isSpeaking;
     }
@@ -50,6 +65,9 @@ public class MainAntagonist : Enemy {
     }
 
     protected override void MoveAnimation() {
+        if (_isSpeaking) {
+            return;
+        }
         if (_isDefending) {
             float degrees = angle * Mathf.Rad2Deg % 360;
             if (degrees >= 315 && degrees <= 360 || degrees >= 0 && degrees <= 135) {
@@ -70,7 +88,7 @@ public class MainAntagonist : Enemy {
     protected override IEnumerator WaitForStunEnd() {
         _navMeshAgent.isStopped = true;
         _rb.detectCollisions = false;
-        _rb.velocity = Vector3.zero;
+        _rb.linearVelocity = Vector3.zero;
         _isStunned = true;
         
         yield return StartCoroutine(_spine.ShowSpineAnimation("hurt"));
@@ -123,9 +141,9 @@ public class MainAntagonist : Enemy {
         if (distance <= 2f) {
             StartCoroutine(Test());
         }
-        
+        EntryPoint.Audio.PlaySound(Sounds.Sword_whoosh);
         yield return _spine.ShowSpineAnimation("attack");
-       
+     
         _navMeshAgent.destination = transform.position;
         _navMeshAgent.isStopped = true;
 

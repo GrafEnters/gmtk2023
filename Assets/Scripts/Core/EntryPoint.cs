@@ -40,6 +40,7 @@ namespace DefaultNamespace {
 
             Audio = _audio;
             _audio.Init();
+            Audio.PlayMusic(Music.comics_music);
             if (!string.IsNullOrEmpty(SaveDataManager.Data.HeroName)) {
                 SceneManager.LoadScene(1);
                 return;
